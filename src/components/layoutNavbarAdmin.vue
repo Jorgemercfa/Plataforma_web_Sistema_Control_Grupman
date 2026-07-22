@@ -16,14 +16,14 @@ const usuario = {
 /* ── Notificaciones mock ── */
 const notificaciones = ref(3);
 
-/* ── Menú de navegación ── */
+/* ── Menú de navegación corregido ── */
 const menu = [
   {
     seccion: 'Operaciones',
     icono: '🛠️',
     items: [
-      { label: 'Dashboard',    icon: '▦',  ruta: '/admin/dashboard' },
-      { label: 'Clientes',     icon: '🏢', ruta: '/admin/clientes' },
+      { label: 'Inicio',       icon: '▦',  ruta: '/Home-item-admin' },
+      { label: 'Clientes',     icon: '🏢', ruta: '/Client-detail' },
       { label: 'Cotizaciones', icon: '📋', ruta: '/admin/cotizaciones' },
       { label: 'Visitas',      icon: '📅', ruta: '/admin/visitas' },
       { label: 'Inventario',   icon: '📦', ruta: '/admin/inventario' },

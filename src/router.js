@@ -5,8 +5,10 @@ import MainHome from '@/views/Main-Home.vue';
 import SignInAdmin from '@/views/AdminViews/Sign-in-admin.vue';
 import ForgetPassword from '@/views/AdminViews/Forget-password-admin.vue';
 import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
+import ClientDetails from '@/views/AdminViews/Client-detail-view.vue';
 
 const routes = [
+  // Vistas principales
   {
     path: '/',
     name: 'MainHome',
@@ -44,7 +46,15 @@ const routes = [
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
-
+  {
+    path:'/Client-detail',
+    name: 'ClientDetails',
+    component: ClientDetails,
+    meta: {
+      title: 'Detalles del Cliente | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
   // Redirección para rutas no encontradas (404)
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
