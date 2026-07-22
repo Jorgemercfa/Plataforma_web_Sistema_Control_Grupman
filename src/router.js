@@ -1,19 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 // Usamos '@' (apunta a src/) y la ruta exacta en minúsculas: 'adminViews'
-import SignIn from '@/views/AdminViews/Sign-in-admin.vue';
+import MainHome from '@/views/Main-Home.vue';
+import SignInAdmin from '@/views/AdminViews/Sign-in-admin.vue';
 import ForgetPassword from '@/views/AdminViews/Forget-password-admin.vue';
-import Home from '@/views/AdminViews/Home-item-admin.vue';
+import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
 
 const routes = [
-  // Rutas de administración
   {
     path: '/',
-    name: 'SignIn',
-    component: SignIn,
+    name: 'MainHome',
+    component: MainHome,
     meta: {
-      title: 'Iniciar sesión | Grupman',
-      description: 'Grupman — soluciones profesionales para tu empresa.',
+      title: 'Inicio | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  // Rutas de administración
+  {
+    path: '/SignInAdmin',
+    name: 'SignInAdmin',
+    component: SignInAdmin,
+    meta: {
+      title: 'Iniciar sesión | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
   {
@@ -21,17 +31,17 @@ const routes = [
     name: 'ForgetPassword',
     component: ForgetPassword,
     meta: {
-      title: 'Recuperar contraseña | Grupman',
-      description: 'Grupman — soluciones profesionales para tu empresa.',
+      title: 'Recuperar contraseña | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
   {
-    path: '/Home-item',
-    name: 'Home',
-    component: Home,
+    path: '/Home-item-admin',
+    name: 'HomeItemAdmin',
+    component: HomeItemAdmin,
     meta: {
-      title: 'Inicio | Grupman',
-      description: 'Grupman — soluciones profesionales para tu empresa.',
+      title: 'Inicio Administración | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
 
