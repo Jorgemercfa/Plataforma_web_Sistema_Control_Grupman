@@ -15,8 +15,8 @@
                         <label for="password">Contraseña</label>
                         <input type="password" id="password" name="password" required>
                     </div>
-                    <button type="submit">Iniciar sesión</button>
-                    <button type="button" @click="$router.push('/forget-password')">¿Olvidaste tu contraseña?</button>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    <button type="button" class="btn btn-primary" @click="$router.push('/forget-password')">¿Olvidaste tu contraseña?</button>
                 </form>
             </div> 
         </div>   
@@ -49,6 +49,11 @@
 
 .Sign-in-form .form-group {
     margin-bottom: 20px;
+}
+
+.btn btn-primary{
+    background-color: #004c08;
+    border-color: #004c08;
 }
 
 </style>
