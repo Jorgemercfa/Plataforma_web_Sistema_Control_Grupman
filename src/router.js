@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import SignIn from './views/AdminViews/Sign-in-admin.vue/index.js';
-import ForgetPassword from './views/AdminViews/Forget-password-admin.vue';
-import Home from './views/AdminViews/Home-item-admin.vue/index.js';
+// Usamos '@' (apunta a src/) y la ruta exacta en minúsculas: 'adminViews'
+import SignIn from '@/views/adminViews/Sign-in-admin.vue';
+import ForgetPassword from '@/views/adminViews/Forget-password-admin.vue';
+import Home from '@/views/adminViews/Home-item-admin.vue';
 
 const routes = [
-  //Admin routes
+  // Rutas de administración
   {
     path: '/',
     name: 'SignIn',
@@ -34,6 +35,7 @@ const routes = [
     },
   },
 
+  // Redirección para rutas no encontradas (404)
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
 
