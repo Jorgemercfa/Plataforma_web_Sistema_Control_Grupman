@@ -1,12 +1,14 @@
 <script setup>
 import { ref } from 'vue';
+// Importamos la barra lateral desde components
+import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
 
 /* ── Métricas mock ────────────────────────────────── */
 const stats = [
-  { label: 'Visitas hoy',        valor: 6,  sub: '2 en proceso',       icono: 'ti-calendar',      color: 'green'  },
-  { label: 'Clientes activos',   valor: 48, sub: '3 nuevos este mes',   icono: 'ti-building',      color: 'blue'   },
-  { label: 'Cotizaciones pend.', valor: 5,  sub: 'Sin respuesta',       icono: 'ti-file-invoice',  color: 'amber'  },
-  { label: 'Productos bajo mín.',valor: 3,  sub: 'Revisar inventario',  icono: 'ti-package',       color: 'red'    },
+  { label: 'Visitas hoy',        valor: 6,  sub: '2 en proceso',     icono: 'ti-calendar',      color: 'green'  },
+  { label: 'Clientes activos',   valor: 48, sub: '3 nuevos este mes', icono: 'ti-building',      color: 'blue'   },
+  { label: 'Cotizaciones pend.', valor: 5,  sub: 'Sin respuesta',      icono: 'ti-file-invoice',  color: 'amber'  },
+  { label: 'Productos bajo mín.',valor: 3,  sub: 'Revisar inventario', icono: 'ti-package',       color: 'red'    },
 ];
 
 /* ── Visitas del día mock ─────────────────────────── */
@@ -69,143 +71,164 @@ const statColor = (c) => ({
 </script>
 
 <template>
-  <div class="dashboard">
+  <div class="admin-layout">
+    <!-- Componente Menú Lateral -->
+    <layoutNavbarAdmin />
 
-    <!-- Cabecera de página -->
-    <div class="page-header">
-      <div>
-        <h1 class="page-title">Dashboard</h1>
-        <p class="page-sub">Lunes, 21 de julio de 2026</p>
-      </div>
-      <button class="btn-primary">
-        <i class="ti ti-plus" aria-hidden="true"></i>
-        Nueva visita
-      </button>
-    </div>
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <div class="dashboard">
 
-    <!-- ── Métricas ──────────────────────────────── -->
-    <div class="stats-grid">
-      <div
-        v-for="s in stats"
-        :key="s.label"
-        class="stat-card"
-      >
-        <div class="stat-icon" :style="{ background: statBg(s.color), color: statColor(s.color) }">
-          <i :class="['ti', s.icono]" aria-hidden="true"></i>
-        </div>
-        <div class="stat-body">
-          <div class="stat-valor">{{ s.valor }}</div>
-          <div class="stat-label">{{ s.label }}</div>
-          <div class="stat-sub">{{ s.sub }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Fila principal ────────────────────────── -->
-    <div class="main-row">
-
-      <!-- Visitas del día -->
-      <div class="card card--wide">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="ti ti-calendar-event" aria-hidden="true"></i>
-            Visitas de hoy
+        <!-- Cabecera de página -->
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-sub">Lunes, 21 de julio de 2026</p>
           </div>
-          <router-link to="/admin/visitas" class="card-link">Ver todas</router-link>
+          <button class="btn-primary">
+            <i class="ti ti-plus" aria-hidden="true"></i>
+            Nueva visita
+          </button>
         </div>
 
-        <div class="table-wrap">
-          <table class="tabla">
-            <thead>
-              <tr>
-                <th>Cliente</th>
-                <th>Hora</th>
-                <th>Tipo</th>
-                <th>Técnico</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="v in visitasHoy" :key="v.id">
-                <td>
-                  <div class="cell-main">{{ v.cliente }}</div>
-                  <div class="cell-sub">{{ v.local }}</div>
-                </td>
-                <td class="cell-hora">{{ v.hora }}</td>
-                <td>{{ v.tipo }}</td>
-                <td>{{ v.tecnico }}</td>
-                <td>
-                  <span :class="['badge', estadoVisitaClass(v.estado)]">
-                    {{ estadoVisitaLabel(v.estado) }}
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Columna derecha -->
-      <div class="side-col">
-
-        <!-- Cotizaciones recientes -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">
-              <i class="ti ti-file-invoice" aria-hidden="true"></i>
-              Cotizaciones recientes
+        <!-- ── Métricas ──────────────────────────────── -->
+        <div class="stats-grid">
+          <div
+            v-for="s in stats"
+            :key="s.label"
+            class="stat-card"
+          >
+            <div class="stat-icon" :style="{ background: statBg(s.color), color: statColor(s.color) }">
+              <i :class="['ti', s.icono]" aria-hidden="true"></i>
             </div>
-            <router-link to="/admin/cotizaciones" class="card-link">Ver todas</router-link>
+            <div class="stat-body">
+              <div class="stat-valor">{{ s.valor }}</div>
+              <div class="stat-label">{{ s.label }}</div>
+              <div class="stat-sub">{{ s.sub }}</div>
+            </div>
           </div>
-          <div class="cot-list">
-            <div v-for="c in cotizaciones" :key="c.id" class="cot-item">
-              <div class="cot-info">
-                <div class="cot-cliente">{{ c.cliente }}</div>
-                <div class="cot-meta">{{ c.fecha }} · {{ c.monto }}</div>
+        </div>
+
+        <!-- ── Fila principal ────────────────────────── -->
+        <div class="main-row">
+
+          <!-- Visitas del día -->
+          <div class="card card--wide">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="ti ti-calendar-event" aria-hidden="true"></i>
+                Visitas de hoy
               </div>
-              <span :class="['badge', estadoCotClass(c.estado)]">
-                {{ estadoCotLabel(c.estado) }}
-              </span>
+              <router-link to="/admin/visitas" class="card-link">Ver todas</router-link>
             </div>
-          </div>
-        </div>
 
-        <!-- Alertas de stock -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title card-title--alert">
-              <i class="ti ti-alert-triangle" aria-hidden="true"></i>
-              Stock bajo mínimo
+            <div class="table-wrap">
+              <table class="tabla">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Hora</th>
+                    <th>Tipo</th>
+                    <th>Técnico</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="v in visitasHoy" :key="v.id">
+                    <td>
+                      <div class="cell-main">{{ v.cliente }}</div>
+                      <div class="cell-sub">{{ v.local }}</div>
+                    </td>
+                    <td class="cell-hora">{{ v.hora }}</td>
+                    <td>{{ v.tipo }}</td>
+                    <td>{{ v.tecnico }}</td>
+                    <td>
+                      <span :class="['badge', estadoVisitaClass(v.estado)]">
+                        {{ estadoVisitaLabel(v.estado) }}
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <router-link to="/admin/inventario" class="card-link">Inventario</router-link>
           </div>
-          <div class="stock-list">
-            <div v-for="s in stockBajo" :key="s.producto" class="stock-item">
-              <div class="stock-nombre">{{ s.producto }}</div>
-              <div class="stock-detalle">
-                <div class="stock-bar-wrap">
-                  <div
-                    class="stock-bar"
-                    :style="{ width: Math.min((s.stock / s.minimo) * 100, 100) + '%' }"
-                  ></div>
+
+          <!-- Columna derecha -->
+          <div class="side-col">
+
+            <!-- Cotizaciones recientes -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="ti ti-file-invoice" aria-hidden="true"></i>
+                  Cotizaciones recientes
                 </div>
-                <span class="stock-num">{{ s.stock }}/{{ s.minimo }} {{ s.unidad }}</span>
+                <router-link to="/admin/cotizaciones" class="card-link">Ver todas</router-link>
+              </div>
+              <div class="cot-list">
+                <div v-for="c in cotizaciones" :key="c.id" class="cot-item">
+                  <div class="cot-info">
+                    <div class="cot-cliente">{{ c.cliente }}</div>
+                    <div class="cot-meta">{{ c.fecha }} · {{ c.monto }}</div>
+                  </div>
+                  <span :class="['badge', estadoCotClass(c.estado)]">
+                    {{ estadoCotLabel(c.estado) }}
+                  </span>
+                </div>
               </div>
             </div>
+
+            <!-- Alertas de stock -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title card-title--alert">
+                  <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+                  Stock bajo mínimo
+                </div>
+                <router-link to="/admin/inventario" class="card-link">Inventario</router-link>
+              </div>
+              <div class="stock-list">
+                <div v-for="s in stockBajo" :key="s.producto" class="stock-item">
+                  <div class="stock-nombre">{{ s.producto }}</div>
+                  <div class="stock-detalle">
+                    <div class="stock-bar-wrap">
+                      <div
+                        class="stock-bar"
+                        :style="{ width: Math.min((s.stock / s.minimo) * 100, 100) + '%' }"
+                      ></div>
+                    </div>
+                    <span class="stock-num">{{ s.stock }}/{{ s.minimo }} {{ s.unidad }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
-    </div>
-
+    </main>
   </div>
 </template>
 
 <style scoped>
+/* ── Layout Contenedor Flexible ───────────────── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.main-content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+
 /* ── Tokens locales ───────────────────────────── */
 .dashboard {
-  --green:  #42ae1a;
-  --green-s:#e8f5e9;
+  --green:   #42ae1a;
+  --green-s: #e8f5e9;
   font-family: 'Inter', 'Segoe UI', sans-serif;
   color: #111827;
 }
@@ -495,5 +518,6 @@ const statColor = (c) => ({
 @media (max-width: 600px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .page-header { flex-direction: column; }
+  .main-content { padding: 16px; }
 }
 </style>
