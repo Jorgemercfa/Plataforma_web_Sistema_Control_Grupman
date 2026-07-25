@@ -20,6 +20,7 @@ const handleSubmit = () => {
       
       <!-- Encabezado -->
       <div class="signin-header">
+      <RouterLink to="/" class="return-main-view">Regresar</RouterLink>
         <h1 class="signin-title">Iniciar Sesión Clientes</h1>
         <p class="signin-subtitle">Grupman</p>
       </div>
