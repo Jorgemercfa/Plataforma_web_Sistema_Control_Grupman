@@ -46,7 +46,7 @@ const menu = [
     seccion: 'Gestión humana',
     icono: '👥',
     items: [
-      { label: 'Personal',     icon: '👤', ruta: '/admin/personal' },
+      { label: 'Personal',     icon: '👤', ruta: '/Staff-detail' },
     ],
   },
 ];
@@ -217,7 +217,8 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
-  background: #1b2e1c;
+  background: #004c08;
+  color: #fff;
   display: flex;
   flex-direction: column;
   transition: width 0.25s ease, min-width 0.25s ease;
