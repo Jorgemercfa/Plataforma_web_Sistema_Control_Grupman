@@ -18,7 +18,6 @@ const handleSubmit = () => {
   <div class="signin-page">
   <RouterLink to="/" class="return-main-view">Regresar</RouterLink>
     <div class="signin-card">
-      
       <!-- Encabezado -->
       <div class="signin-header">
         <h1 class="signin-title">Iniciar Sesión</h1>
@@ -75,12 +74,27 @@ const handleSubmit = () => {
 /* Contenedor Principal con fondo suave */
 .signin-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #f7f9f6; /* Fondo exterior suave */
   padding: 20px;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.return-main-view {
+  display: inline-block;
+  font-size: 14px;
+  background-color: #42ae1a;
+  color: #ffffff;
+  text-decoration: none;
+  margin-bottom: 12px;
+  Width: 100px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 6px;
 }
 
 /* Tarjeta Blanca Redondeada */
