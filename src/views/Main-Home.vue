@@ -3,8 +3,10 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const irALogin = () => router.push('/SignInAdmin');
-const irAFuncionalidades = () => router.push('/funcionalidades');
+const irALoginAdmin = () => router.push('/SignInAdmin');
+const irALoginOp = () => router.push('/SignInOperator');
+const irALoginClient = () => router.push('/SignInClient');
+const irAFuncionalidades = () => router.push('/ManualFeature');
 </script>
 
 <template>
@@ -27,13 +29,24 @@ const irAFuncionalidades = () => router.push('/funcionalidades');
           certificado, sin papeles.
         </p>
 
+        <div class="sections-actions"> 
+            <div class="hero-actions">
+          <button class="btn-primary" @click="irALoginAdmin">
+            Plataforma Administrativa
+          </button>
+          <button class="btn-primary" @click="irALoginOp">
+            Plataforma Operarios
+          </button>
+        </div>
         <div class="hero-actions">
-          <button class="btn-primary" @click="irALogin">
-            Ingresar a la plataforma
+          <button class="btn-primary" @click="irALoginClient">
+            Plataforma Clientes
           </button>
           <button class="btn-ghost" @click="irAFuncionalidades">
             Ver funcionalidades
           </button>
+        </div>
+        
         </div>
 
       </div>
@@ -141,6 +154,12 @@ const irAFuncionalidades = () => router.push('/funcionalidades');
   color: #4b5563;
   margin: 0 0 36px;
   max-width: 480px;
+}
+
+.sections-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* Botones */

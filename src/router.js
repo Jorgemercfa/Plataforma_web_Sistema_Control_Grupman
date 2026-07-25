@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 // Usamos '@' (apunta a src/) y la ruta exacta en minúsculas: 'adminViews'
 import MainHome from '@/views/Main-Home.vue';
+import ManualFeature from '@/views/Features-Views.vue';
 import SignInAdmin from '@/views/AdminViews/Sign-in-admin.vue';
 import ForgetPassword from '@/views/AdminViews/Forget-password-admin.vue';
 import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
@@ -16,6 +17,15 @@ const routes = [
     component: MainHome,
     meta: {
       title: 'Inicio | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/ManualFeature',
+    name: 'ManualFeature',
+    component: ManualFeature,
+    meta: {
+      title: 'Manual de usuario | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
