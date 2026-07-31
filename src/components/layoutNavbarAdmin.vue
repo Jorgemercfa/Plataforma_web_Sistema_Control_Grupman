@@ -47,6 +47,7 @@ const menu = [
     icono: '👥',
     items: [
       { label: 'Personal',     icon: '👤', ruta: '/Staff-detail' },
+      { label: 'Horas de trabajo', icon: '⏱️', ruta: '/Worker-hours' },
     ],
   },
   {

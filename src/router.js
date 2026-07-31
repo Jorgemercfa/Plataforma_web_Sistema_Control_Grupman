@@ -9,6 +9,7 @@ import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
 import ClientDetails from '@/views/AdminViews/Client-detail-view.vue';
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
+import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
 
 const routes = [
   // Vistas principales
@@ -82,6 +83,15 @@ const routes = [
       component: AdminScheduler,
       meta: {
         title: 'Horarios de Trabajo | Plataforma Grupman',
+        description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+      },
+    },
+    {
+      path:'/Worker-hours',
+      name: 'WorkerHours',
+      component: WorkerHours,
+      meta: {
+        title: 'Horas de Trabajas por empleado | Plataforma Grupman',
         description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
       },
     },
