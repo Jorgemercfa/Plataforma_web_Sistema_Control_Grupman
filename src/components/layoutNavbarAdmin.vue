@@ -49,6 +49,13 @@ const menu = [
       { label: 'Personal',     icon: '👤', ruta: '/Staff-detail' },
     ],
   },
+  {
+    seccion: 'Horarios',
+    icono: '⏰',
+    items: [
+      { label: 'Horarios de trabajo', icon: '🕒', ruta: '/Work-schedules' },
+    ],
+  }
 ];
 
 /* ── Ruta activa ── */

@@ -8,6 +8,7 @@ import ForgetPassword from '@/views/AdminViews/Forget-password-admin.vue';
 import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
 import ClientDetails from '@/views/AdminViews/Client-detail-view.vue';
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
+import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
 
 const routes = [
   // Vistas principales
@@ -66,15 +67,24 @@ const routes = [
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
-  {
-    path:'/Staff-detail',
-    name: 'StaffDetails',
-    component: StaffDetails,
-    meta: {
-      title: 'Personal de la empresa | Plataforma Grupman',
-      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    {
+      path:'/Staff-detail',
+      name: 'StaffDetails',
+      component: StaffDetails,
+      meta: {
+        title: 'Personal de la empresa | Plataforma Grupman',
+        description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+      },
     },
-  },
+    {
+      path:'/Work-schedules',
+      name: 'AdminScheduler',
+      component: AdminScheduler,
+      meta: {
+        title: 'Horarios de Trabajo | Plataforma Grupman',
+        description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+      },
+    },
 
   // Redirección para rutas no encontradas (404)
   { path: '/:pathMatch(.*)*', redirect: '/' },
