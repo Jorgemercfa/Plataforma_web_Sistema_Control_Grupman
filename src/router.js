@@ -22,9 +22,11 @@ import PayrollItem from './views/AdminViews/Payroll-item.vue';
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
 import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
-//Workers Views
+
+//Operator Views
 import OperatorSignIn from '@/views/operatorViews/Operator-sign-in.vue';
 import HomeItemOperator from '@/views/operatorViews/Home-operator-item.vue';
+import VisitorDetailsOperator from '@/views/operatorViews/Visits-operator-item.vue';
 import WorkSchedulesOperator from '@/views/operatorViews/Work-schedules-operator.vue';
 
 const routes = [
@@ -183,7 +185,7 @@ const routes = [
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
-  // Operatior views
+  // Operator views
   {
     path: '/SignInOperator',
     name: 'OperatorSignIn',
@@ -199,6 +201,15 @@ const routes = [
     component: HomeItemOperator,
     meta: {
       title: 'Inicio Operador | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/Visits-item-operator',
+    name: 'VisitorDetailsOperator',
+    component: VisitorDetailsOperator,
+    meta: { 
+      title: 'Detalles de Visitas | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
