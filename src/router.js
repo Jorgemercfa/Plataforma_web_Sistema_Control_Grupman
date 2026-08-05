@@ -25,6 +25,7 @@ import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
 //Workers Views
 import OperatorSignIn from '@/views/operatorViews/Operator-sign-in.vue';
 import HomeItemOperator from '@/views/operatorViews/Home-operator-item.vue';
+import WorkSchedulesOperator from '@/views/operatorViews/Work-schedules-operator.vue';
 
 const routes = [
   // Vistas principales
@@ -198,6 +199,15 @@ const routes = [
     component: HomeItemOperator,
     meta: {
       title: 'Inicio Operador | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/Work-schedules-operator',
+    name: 'WorkSchedulesOperator',
+    component: WorkSchedulesOperator,
+    meta: {
+      title: 'Horarios de Trabajo | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },

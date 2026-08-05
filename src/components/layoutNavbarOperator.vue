@@ -32,7 +32,7 @@ const menu = [
     seccion: 'Horarios',
     icono: '⏰',
     items: [
-      { label: 'Horarios de trabajo', icon: '🕒', ruta: '/Work-schedules' },
+      { label: 'Horarios de trabajo', icon: '🕒', ruta: '/Work-schedules-operator' },
     ],
   }
 ];
