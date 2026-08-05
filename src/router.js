@@ -9,6 +9,7 @@ import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
 import ClientDetails from '@/views/AdminViews/Client-detail-view.vue';
 import QuotesDetails from '@/views/AdminViews/Quotes-item.vue';
 import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
+import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
 import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
@@ -71,6 +72,15 @@ const routes = [
     },
   },
   {
+    path:'/Quotes-item',
+    name: 'QuotesDetails',
+    component: QuotesDetails,
+    meta: {
+      title: 'Detalles de Cotizaciones | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
     path:'/Visits-item',
     name: 'VisitorDetails',
     component: VisitorDetails,
@@ -80,11 +90,11 @@ const routes = [
     },
   },
   {
-    path:'/Quotes-item',
-    name: 'QuotesDetails',
-    component: QuotesDetails,
+    path:'/Services-item',
+    name: 'ServicesDetails',
+    component: ServicesDetails,
     meta: {
-      title: 'Detalles de Cotizaciones | Plataforma Grupman',
+      title: 'Servicios | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
