@@ -24,7 +24,7 @@ const menu = [
     items: [
       { label: 'Inicio',       icon: '▦',  ruta: '/Home-item-operator' },
       { label: 'Visitas',      icon: '📅', ruta: '/Visits-item-operator' },
-      { label: 'Inventario',   icon: '📦', ruta: '/Inventory-item' },
+      { label: 'Inventario',   icon: '📦', ruta: '/Inventory-item-operator' },
       { label: 'Servicios',    icon: '🔧', ruta: '/Services-item' },
     ],
   },

@@ -27,6 +27,7 @@ import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
 import OperatorSignIn from '@/views/operatorViews/Operator-sign-in.vue';
 import HomeItemOperator from '@/views/operatorViews/Home-operator-item.vue';
 import VisitorDetailsOperator from '@/views/operatorViews/Visits-operator-item.vue';
+import InventoryDetailsOperator from '@/views/operatorViews/Inventory-operator-item.vue';
 import WorkSchedulesOperator from '@/views/operatorViews/Work-schedules-operator.vue';
 
 const routes = [
@@ -212,6 +213,15 @@ const routes = [
       title: 'Detalles de Visitas | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
+  },
+  {
+    path: '/Inventory-item-operator',
+    name: 'InventoryDetailsOperator',
+    component: InventoryDetailsOperator,
+    meta: {
+      title: 'Detalles de Inventario | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },  
   },
   {
     path: '/Work-schedules-operator',
