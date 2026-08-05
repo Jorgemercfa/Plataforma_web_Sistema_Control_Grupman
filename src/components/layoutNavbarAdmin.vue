@@ -36,8 +36,8 @@ const menu = [
     items: [
       { label: 'Resumen',      icon: '📊', ruta: '/admin/finanzas' },
       { label: 'Facturas',     icon: '🧾', ruta: '/Invoice-item' },
-      { label: 'Proveedores',  icon: '🚚', ruta: '/admin/finanzas/proveedores' },
-      { label: 'Compras',      icon: '🛒', ruta: '/admin/finanzas/compras' },
+      { label: 'Proveedores',  icon: '🚚', ruta: '/Suppliers-item' },
+      { label: 'Compras',      icon: '🛒', ruta: '/admin/finanzas/compras' }, //Revisar y ver si se queda o no
       { label: 'Gastos',       icon: '💸', ruta: '/admin/finanzas/gastos' },
       { label: 'Planilla',     icon: '👷', ruta: '/Payroll-item' },
     ],
