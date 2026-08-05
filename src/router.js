@@ -15,6 +15,7 @@ import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 // Admin views Financial
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
+import PayrollItem from './views/AdminViews/Payroll-item.vue';
 // Admin views Human Resources
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
@@ -120,6 +121,15 @@ const routes = [
     component: InvoiceDetails,
     meta: {
       title: 'Facturas | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path:'/Payroll-item',
+    name: 'PayrollItem',
+    component: PayrollItem,
+    meta: {
+      title: 'Nómina | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },

@@ -39,7 +39,7 @@ const menu = [
       { label: 'Proveedores',  icon: '🚚', ruta: '/admin/finanzas/proveedores' },
       { label: 'Compras',      icon: '🛒', ruta: '/admin/finanzas/compras' },
       { label: 'Gastos',       icon: '💸', ruta: '/admin/finanzas/gastos' },
-      { label: 'Planilla',     icon: '👷', ruta: '/admin/finanzas/planilla' },
+      { label: 'Planilla',     icon: '👷', ruta: '/Payroll-item' },
     ],
   },
   {
