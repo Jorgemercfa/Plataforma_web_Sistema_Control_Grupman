@@ -83,8 +83,8 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
       <!-- Logo + toggle -->
       <div class="sidebar-header">
         <div class="sidebar-logo">
-          <span class="logo-mark">P</span>
-          <span class="logo-text">PlagasControl</span>
+          <span class="logo-mark">G</span>
+          <span class="logo-text">Grupman</span>
         </div>
         <button class="sidebar-toggle" @click="toggleSidebar" :title="collapsed ? 'Expandir' : 'Colapsar'">
           <span class="toggle-icon">{{ collapsed ? '→' : '←' }}</span>
