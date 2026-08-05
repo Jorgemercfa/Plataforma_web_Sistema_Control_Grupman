@@ -35,7 +35,7 @@ const menu = [
     icono: '💰',
     items: [
       { label: 'Resumen',      icon: '📊', ruta: '/admin/finanzas' },
-      { label: 'Facturas',     icon: '🧾', ruta: '/admin/finanzas/facturas' },
+      { label: 'Facturas',     icon: '🧾', ruta: '/Invoice-item' },
       { label: 'Proveedores',  icon: '🚚', ruta: '/admin/finanzas/proveedores' },
       { label: 'Compras',      icon: '🛒', ruta: '/admin/finanzas/compras' },
       { label: 'Gastos',       icon: '💸', ruta: '/admin/finanzas/gastos' },

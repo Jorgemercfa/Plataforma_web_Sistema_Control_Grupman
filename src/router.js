@@ -7,14 +7,19 @@ import ManualFeature from '@/views/Features-Views.vue';
 import SignInAdmin from '@/views/AdminViews/Sign-in-admin.vue';
 import ForgetPassword from '@/views/AdminViews/Forget-password-admin.vue';
 import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
+//Admin views Operations
 import ClientDetails from '@/views/AdminViews/Client-detail-view.vue';
 import QuotesDetails from '@/views/AdminViews/Quotes-item.vue';
 import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
 import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
+// Admin views Financial
+import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
+// Admin views Human Resources
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
 import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
+
 
 const routes = [
   // Vistas principales
@@ -106,6 +111,15 @@ const routes = [
     component: ServicesDetails,
     meta: {
       title: 'Servicios | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path:'/Invoice-item',
+    name: 'InvoiceDetails',
+    component: InvoiceDetails,
+    meta: {
+      title: 'Facturas | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
