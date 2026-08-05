@@ -22,7 +22,8 @@ import PayrollItem from './views/AdminViews/Payroll-item.vue';
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
 import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
-
+//Workers Views
+import OperatorSignIn from '@/views/operatorViews/Operator-sign-in.vue';
 
 const routes = [
   // Vistas principales
@@ -177,6 +178,16 @@ const routes = [
     component: WorkerHours,
     meta: {
       title: 'Horas de Trabajas por empleado | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  // Operatior views
+  {
+    path: '/SignInOperator',
+    name: 'OperatorSignIn',
+    component: OperatorSignIn,
+    meta: {
+      title: 'Iniciar sesión Operador | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
