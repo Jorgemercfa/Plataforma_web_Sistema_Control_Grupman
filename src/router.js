@@ -3,12 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 // Usamos '@' (apunta a src/) y la ruta exacta en minúsculas: 'adminViews'
 import MainHome from '@/views/Main-Home.vue';
 import ManualFeature from '@/views/Features-Views.vue';
+//Admin views
 import SignInAdmin from '@/views/AdminViews/Sign-in-admin.vue';
 import ForgetPassword from '@/views/AdminViews/Forget-password-admin.vue';
 import HomeItemAdmin from '@/views/AdminViews/Home-item-admin.vue';
 import ClientDetails from '@/views/AdminViews/Client-detail-view.vue';
 import QuotesDetails from '@/views/AdminViews/Quotes-item.vue';
 import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
+import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import StaffDetails from '@/views/AdminViews/Staff-item.vue';
 import AdminScheduler from '@/views/AdminViews/Work-schedules-amin.vue';
@@ -86,6 +88,15 @@ const routes = [
     component: VisitorDetails,
     meta: {
       title: 'Detalles de Visitas | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path:'/Inventory-item',
+    name: 'InventoryDetails',
+    component: InventoryDetails,
+    meta: {
+      title: 'Detalles de Inventario | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },

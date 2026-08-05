@@ -26,7 +26,7 @@ const menu = [
       { label: 'Clientes',     icon: '🏢', ruta: '/Client-detail' },
       { label: 'Cotizaciones', icon: '📋', ruta: '/Quotes-item' },
       { label: 'Visitas',      icon: '📅', ruta: '/Visits-item' },
-      { label: 'Inventario',   icon: '📦', ruta: '/admin/inventario' },
+      { label: 'Inventario',   icon: '📦', ruta: '/Inventory-item' },
       { label: 'Servicios',    icon: '🔧', ruta: '/Services-item' },
     ],
   },
