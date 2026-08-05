@@ -130,7 +130,7 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
         <!-- Título de la sección actual (slot opcional) -->
         <div class="topbar-left">
           <slot name="titulo">
-            <span class="topbar-title">Panel de administración</span>
+            <span class="topbar-title">Panel de Operaciones</span>
           </slot>
         </div>
 
