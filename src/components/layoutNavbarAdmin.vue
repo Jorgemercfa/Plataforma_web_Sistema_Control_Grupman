@@ -24,7 +24,7 @@ const menu = [
     items: [
       { label: 'Inicio',       icon: '▦',  ruta: '/Home-item-admin' },
       { label: 'Clientes',     icon: '🏢', ruta: '/Client-detail' },
-      { label: 'Cotizaciones', icon: '📋', ruta: '/admin/cotizaciones' },
+      { label: 'Cotizaciones', icon: '📋', ruta: '/Quotes-item' },
       { label: 'Visitas',      icon: '📅', ruta: '/Visits-item' },
       { label: 'Inventario',   icon: '📦', ruta: '/admin/inventario' },
       { label: 'Servicios',    icon: '🔧', ruta: '/admin/servicios' },
@@ -193,7 +193,7 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
 
       <!-- CONTENIDO DE LA VISTA -->
       <main class="main-content">
-        <RouterView />
+        <slot />
       </main>
 
     </div>
