@@ -26,9 +26,8 @@ const areas = ref([
 </script>
 
 <template>
-  <div class="admin-layout">
     <!-- Componente Menú Lateral -->
-    <layoutNavbarAdmin />
+    <layoutNavbarAdmin>
 
     <!-- Contenido Principal -->
     <main class="main-content">
@@ -68,7 +67,7 @@ const areas = ref([
 
       </div>
     </main>
-  </div>
+  </layoutNavbarAdmin>
 </template>
 
 <style scoped>

@@ -4,9 +4,8 @@ import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
 </script>
 
 <template>
-  <div class="admin-layout">
     <!-- Componente Menú Lateral -->
-    <layoutNavbarAdmin />
+    <layoutNavbarAdmin>
 
     <!-- Contenido Principal -->
     <main class="main-content">
@@ -66,7 +65,7 @@ import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
         </div>
       </div>
     </main>
-  </div>
+  </layoutNavbarAdmin>
 </template>
 
 <style scoped>

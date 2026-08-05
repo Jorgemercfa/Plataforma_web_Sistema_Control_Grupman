@@ -138,9 +138,7 @@ const estadoClase = (estado) => ({
 </script>
 
 <template>
-  <div class="admin-layout">
-    <layoutNavbarAdmin />
-
+    <layoutNavbarAdmin>
     <div class="visitas-content">
       <header class="visitas-header">
         <div>
@@ -327,7 +325,7 @@ const estadoClase = (estado) => ({
         </form>
       </div>
     </div>
-  </div>
+    </layoutNavbarAdmin>
 </template>
 
 <style scoped>

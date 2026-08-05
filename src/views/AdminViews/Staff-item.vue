@@ -3,8 +3,7 @@ import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
 </script>
 
 <template>
-    <div class="admin-layout">
-        <layoutNavbarAdmin />
+    <layoutNavbarAdmin>
         <div class="staff-content">
             <div class="staff-container">
                <p class="staff-nombre">Juan Pérez</p>
@@ -38,7 +37,7 @@ import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
                </div>
             </div>
         </div>
-    </div>
+    </layoutNavbarAdmin>
 </template>
 
 <style scoped>

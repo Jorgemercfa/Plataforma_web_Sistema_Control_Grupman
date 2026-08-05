@@ -71,14 +71,11 @@ const statColor = (c) => ({
 </script>
 
 <template>
-  <div class="admin-layout">
     <!-- Componente Menú Lateral -->
-    <layoutNavbarAdmin />
-
+    <layoutNavbarAdmin>
     <!-- Contenido Principal -->
     <main class="main-content">
       <div class="dashboard">
-
         <!-- Cabecera de página -->
         <div class="page-header">
           <div>
@@ -208,7 +205,7 @@ const statColor = (c) => ({
 
       </div>
     </main>
-  </div>
+    </layoutNavbarAdmin>
 </template>
 
 <style scoped>

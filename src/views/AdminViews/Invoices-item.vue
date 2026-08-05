@@ -55,9 +55,7 @@ function generarFactura() {
 </script>
 
 <template>
-  <div class="admin-layout">
-    <layoutNavbarAdmin />
-
+    <layoutNavbarAdmin>
     <main class="main-content">
       <div class="dashboard">
 
@@ -162,7 +160,7 @@ function generarFactura() {
         </div>
       </div>
     </main>
-  </div>
+    </layoutNavbarAdmin>
 </template>
 
 <style scoped>
