@@ -37,7 +37,7 @@ const menu = [
       { label: 'Resumen',      icon: '📊', ruta: '/Financial-summary' },
       { label: 'Facturas',     icon: '🧾', ruta: '/Invoice-item' },
       { label: 'Proveedores',  icon: '🚚', ruta: '/Suppliers-item' },
-      { label: 'Compras',      icon: '🛒', ruta: '/admin/finanzas/compras' }, //Revisar y ver si se queda o no
+      { label: 'Compras',      icon: '🛒', ruta: '/Business-purchases' }, //Revisar y ver si se queda o no
       { label: 'Gastos',       icon: '💸', ruta: '/Bills-item' },
       { label: 'Planilla',     icon: '👷', ruta: '/Payroll-item' },
     ],

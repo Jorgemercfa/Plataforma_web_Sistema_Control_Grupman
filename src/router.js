@@ -17,6 +17,7 @@ import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
 import SuppliersDetails from '@/views/AdminViews/Suppliers-item.vue';
+import BusinessPurchases from '@/views/AdminViews/Business-Purchases.vue';
 import BillsDetails from '@/views/AdminViews/Bills-item.vue';
 import PayrollItem from './views/AdminViews/Payroll-item.vue';
 // Admin views Human Resources
@@ -148,6 +149,15 @@ const routes = [
     component: SuppliersDetails,
     meta: {
       title: 'Proveedores | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path:'/Business-purchases',
+    name: 'BusinessPurchases',
+    component: BusinessPurchases,
+    meta: {
+      title: 'Compras | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
