@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue'
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js'
+import { localesProvisionales } from '../../data/provisionalLocalesData.js'
 
 const route = useRoute()
 
@@ -14,10 +15,10 @@ const cliente = computed(() =>
 const badgeClass = (e) => ({ activo: 'badge--green', inactivo: 'badge--gray', pendiente: 'badge--amber' }[e] || 'badge--gray')
 const badgeLabel = (e) => ({ activo: 'Activo', inactivo: 'Inactivo', pendiente: 'Pendiente' }[e] || e)
 
-/* ── Locales del cliente (mock temporal — falta el archivo de data real) ── */
-const locales = ref([
-  { id: 1, nombre: 'Sede principal', direccion: 'Por definir', estaciones: 0, proximaVisita: 'Sin programar' },
-])
+/* ── Locales reales de este cliente ────────────────── */
+const locales = ref(
+  localesProvisionales.filter((l) => String(l.clienteId) === String(route.params.id))
+)
 
 /* ── Modal: nuevo local ────────────────────────────── */
 const modalAbierto = ref(false)
@@ -27,6 +28,7 @@ function guardarLocal() {
   if (!form.value.nombre || !form.value.direccion) return
   locales.value.push({
     id: Date.now(),
+    clienteId: route.params.id,
     nombre: form.value.nombre,
     direccion: form.value.direccion,
     estaciones: 0,

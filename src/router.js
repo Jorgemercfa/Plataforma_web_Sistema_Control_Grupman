@@ -14,6 +14,7 @@ import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
 import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import ClientSingle from '@/views/AdminViews/Client-single-view.vue';
+import LocalDetails from '@/views/AdminViews/Local-details-view.vue';
 // Admin views Financial
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
@@ -132,6 +133,15 @@ const routes = [
     component: ClientSingle,
     meta: {
       title: 'Detalle del Cliente | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/admin/clientes/:clientId/locales/:localId',
+    name: 'LocalDetails',
+    component: LocalDetails,
+    meta: {
+      title: 'Detalle del Local | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
