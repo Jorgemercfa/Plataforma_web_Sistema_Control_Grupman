@@ -1,6 +1,10 @@
 <script setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+/* ── Enrutamiento ── */
+const route = useRoute();
+const router = useRouter();
 
 /* ── Sidebar colapsado (solo íconos) ── */
 const collapsed = ref(false);
@@ -16,16 +20,16 @@ const usuario = {
 /* ── Notificaciones mock ── */
 const notificaciones = ref(3);
 
-/* ── Menú de navegación corregido ── */
+/* ── Menú de navegación ── */
 const menu = [
   {
     seccion: 'Operaciones',
     icono: '🛠️',
     items: [
-      { label: 'Inicio',       icon: '▦',  ruta: '/Home-item-operator' },
-      { label: 'Visitas',      icon: '📅', ruta: '/Visits-item-operator' },
-      { label: 'Inventario',   icon: '📦', ruta: '/Inventory-item-operator' },
-      { label: 'Servicios',    icon: '🔧', ruta: '/Services-item' },
+      { label: 'Inicio',     icon: '▦',  ruta: '/Home-item-operator' },
+      { label: 'Visitas',    icon: '📅', ruta: '/Visits-item-operator' },
+      { label: 'Inventario', icon: '📦', ruta: '/Inventory-item-operator' },
+      { label: 'Servicios',  icon: '🔧', ruta: '/Services-item' },
     ],
   },
   {
@@ -38,7 +42,6 @@ const menu = [
 ];
 
 /* ── Ruta activa ── */
-const route = useRoute();
 const isActive = (ruta) => route.path === ruta || route.path.startsWith(ruta + '/');
 
 /* ── Sección expandida ── */
@@ -47,9 +50,40 @@ const toggleSeccion = (seccion) => {
   seccionAbierta.value = seccionAbierta.value === seccion ? null : seccion;
 };
 
-/* ── Menú usuario ── */
+/* ── Menú de usuario y Dropdown ── */
 const menuUsuarioAbierto = ref(false);
-const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto.value; };
+const userMenuRef = ref(null);
+
+const toggleMenuUsuario = () => { 
+  menuUsuarioAbierto.value = !menuUsuarioAbierto.value; 
+};
+
+/* Cerrar dropdown al hacer clic fuera del menú */
+const handleClickOutside = (event) => {
+  if (userMenuRef.value && !userMenuRef.value.contains(event.target)) {
+    menuUsuarioAbierto.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+
+/* ── Función para Cerrar Sesión ── */
+const cerrarSesion = () => {
+  menuUsuarioAbierto.value = false;
+
+  // 1. Limpiar datos de autenticación guardados
+  localStorage.removeItem('token');
+  sessionStorage.clear();
+
+  // 2. Redirigir al usuario (cambia '/login' si tu ruta tiene otro nombre)
+  router.push('/');
+};
 </script>
 
 <template>
@@ -148,8 +182,8 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
           <!-- Separador -->
           <div class="topbar-sep"></div>
 
-          <!-- Avatar + menú usuario -->
-          <div class="topbar-user" @click="toggleMenuUsuario">
+          <!-- Avatar + menú usuario (con referencia ref para detectar clics fuera) -->
+          <div class="topbar-user" ref="userMenuRef" @click="toggleMenuUsuario">
             <div class="user-avatar user-avatar--sm">{{ usuario.iniciales }}</div>
             <div class="topbar-user-info">
               <span class="topbar-user-name">{{ usuario.nombre }}</span>
@@ -159,10 +193,18 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
 
             <!-- Dropdown -->
             <div class="user-dropdown" v-if="menuUsuarioAbierto">
-              <div class="dropdown-item">👤  Mi perfil</div>
-              <div class="dropdown-item">⚙️  Configuración</div>
+              <button type="button" class="dropdown-item">👤 &nbsp;Mi perfil</button>
+              <button type="button" class="dropdown-item">⚙️ &nbsp;Configuración</button>
               <div class="dropdown-divider"></div>
-              <div class="dropdown-item dropdown-item--danger">⏻  Cerrar sesión</div>
+              
+              <!-- Botón funcional de Cerrar Sesión -->
+              <button 
+                type="button" 
+                class="dropdown-item dropdown-item--danger" 
+                @click.stop="cerrarSesion"
+              >
+                ⏻ &nbsp;Cerrar sesión
+              </button>
             </div>
           </div>
 
@@ -554,11 +596,18 @@ const toggleMenuUsuario = () => { menuUsuarioAbierto.value = !menuUsuarioAbierto
 }
 
 .dropdown-item {
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: inherit;
   padding: 10px 16px;
   font-size: 13.5px;
   color: #374151;
   cursor: pointer;
   transition: background 0.12s;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-item:hover { background: #f9fafb; }
