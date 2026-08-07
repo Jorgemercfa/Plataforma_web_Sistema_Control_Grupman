@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 // Importamos la barra lateral desde components
-import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js';
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue';
 
 /* ── Métricas mock ────────────────────────────────── */
 const stats = [

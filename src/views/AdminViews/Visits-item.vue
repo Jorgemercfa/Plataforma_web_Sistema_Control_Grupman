@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js'
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue';
 
 /* ---------- Datos mock (reemplazar por tu store / API) ---------- */
 const clientes = ['Colegio San Martín', 'Restaurante El Fogón', 'Condominio Las Palmas']

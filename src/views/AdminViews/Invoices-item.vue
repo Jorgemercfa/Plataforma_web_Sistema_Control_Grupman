@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js'
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue';
 
 /* ── Catálogo de servicios (mismo usado en Dashboard/Visitas) ── */
 const tiposServicio = ['Desinsectación', 'Desratización', 'Desinfección', 'Fumigación', 'Inspección']

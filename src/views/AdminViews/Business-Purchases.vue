@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue'
+import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue';
 
 /* ── Catálogos mock ────────────────────────────────── */
 const proveedores = ['Química Andina', 'Insumos del Norte', 'Distribuidora Rentokil']
