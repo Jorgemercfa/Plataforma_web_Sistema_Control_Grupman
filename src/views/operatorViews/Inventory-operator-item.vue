@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue'
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js'
 
 // Lista de productos con sus stock iniciales
 const productos = ref([

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 // Importamos el layout
-import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js';
 // Importamos la data provisional desde la carpeta data
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js';
 

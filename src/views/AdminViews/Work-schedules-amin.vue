@@ -1,6 +1,6 @@
 <script setup>
 // import { ref, computed } from 'vue';
-import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js';
 </script>
 
 <template>

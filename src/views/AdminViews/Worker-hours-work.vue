@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import layoutNavbarAdmin from '../../components/layoutNavbarAdmin.vue';
+import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue/index.js';
 
 /* ── Datos organizados por área ────────────────────────── */
 const areas = ref([

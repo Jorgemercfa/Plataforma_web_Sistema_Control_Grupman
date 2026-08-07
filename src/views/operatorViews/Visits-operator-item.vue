@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import layoutNavbarOperator from '../../components/layoutNavbarOperator.vue'
+import layoutNavbarOperator from '../../components/operatorComponets/layoutNavbarOperator.vue/index.js'
 
 /* ---------- Datos mock (reemplazar por tu store / API) ---------- */
 const clientes = ['Colegio San Martín', 'Restaurante El Fogón', 'Condominio Las Palmas']
