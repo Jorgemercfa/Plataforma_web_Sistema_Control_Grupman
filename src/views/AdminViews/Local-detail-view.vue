@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue'
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js'
 import { localesProvisionales } from '../../data/provisionalLocalesData.js'
-import { estacionesProvisionales } from '../../data/Provisionalstationsdata.js'
+import { estacionesProvisionales } from '../../data/provisionalStationsData.js'
 
 const route = useRoute()
 

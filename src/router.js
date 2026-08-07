@@ -14,7 +14,7 @@ import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
 import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import ClientSingle from '@/views/AdminViews/Client-single-view.vue';
-import LocalDetails from '@/views/AdminViews/Local-details-view.vue';
+import LocalDetails from '@/views/AdminViews/Local-detail-view.vue';
 // Admin views Financial
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
@@ -33,6 +33,12 @@ import HomeItemOperator from '@/views/operatorViews/Home-operator-item.vue';
 import VisitorDetailsOperator from '@/views/operatorViews/Visits-operator-item.vue';
 import InventoryDetailsOperator from '@/views/operatorViews/Inventory-operator-item.vue';
 import WorkSchedulesOperator from '@/views/operatorViews/Work-schedules-operator.vue';
+import ScanQr from '@/views/operatorViews/ScanQr.vue';
+import VisitDetailOperator from '@/views/operatorViews/VisitDetailOperator.vue';
+import VisitFormview from '@/views/operatorViews/VisitFormview.vue';
+
+// Client views
+import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 
 const routes = [
   // Vistas principales
@@ -272,6 +278,43 @@ const routes = [
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
+  {
+    path: '/tecnico/escanear-qr',
+    name: 'ScanQr',
+    component: ScanQr,
+    meta: {
+      title: 'Escanear QR | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/tecnico/visita/:id',
+    name: 'VisitDetailOperator',
+    component: VisitDetailOperator,
+    meta: {
+      title: 'Detalle de Visita | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/tecnico/visita/:id/formulario',
+    name: 'VisitFormview',
+    component: VisitFormview,
+    meta: {
+      title: 'Formulario de Visita | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  // Client views
+  {
+    path: '/SignInClient',
+    name: 'ClientSignIn',
+    component: ClientSignIn,
+    meta: {
+      title: 'Iniciar sesión Cliente | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
   // Redirección para rutas no encontradas (404)
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
@@ -292,8 +335,6 @@ const defaultTitle = 'Grupman';
 const defaultDescription = 'Grupman — soluciones profesionales para tu empresa.';
 
 router.afterEach((to) => {
-  window.scrollTo(0, 0);
-
   // Título dinámico
   document.title = to.meta.title || defaultTitle;
 
