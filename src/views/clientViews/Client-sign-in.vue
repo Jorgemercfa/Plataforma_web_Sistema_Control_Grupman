@@ -9,7 +9,6 @@ const password = ref('');
 
 const handleSubmit = () => {
   // Aquí irá la lógica con Firebase Auth según la Fase 1 del proyecto
-  console.log('Iniciando sesión:', email.value, password.value);
   router.push({ name: 'HomeItemClient' });
 };
 </script>
@@ -60,7 +59,7 @@ const handleSubmit = () => {
         <button 
           type="button" 
           class="btn btn-outline"
-          @click="router.push('/forget-password')"
+          @click="router.push('/Forget-password')"
         >
           Olvidé Contraseña
         </button>
@@ -90,7 +89,7 @@ const handleSubmit = () => {
   color: #ffffff;
   text-decoration: none;
   margin-bottom: 12px;
-  Width: 100px;
+  width: 100px;
   text-align: center;
   height: 30px;
   line-height: 30px;

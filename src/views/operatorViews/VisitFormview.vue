@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import { useRoute } from 'vue-router';
-import layoutNavbarOperator from '../../components/operatorComponents/layoutNavbarOperator.vue';
+import layoutNavbarOperator from '../../components/operatorComponets/layoutNavbarOperator.vue';
 
 const route  = useRoute();
 

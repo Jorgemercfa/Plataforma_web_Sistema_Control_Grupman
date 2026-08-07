@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/Grupman_web/'   // 👈 nombre exacto de tu repo
+    ? '/Plataforma_web_Sistema_Control_Grupman/'   // nombre exacto del repo
     : '/',
 
   transpileDependencies: true,

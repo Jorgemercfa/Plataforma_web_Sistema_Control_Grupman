@@ -7,9 +7,9 @@ export default [
     longDescription: `
       Utilizamos productos ecoamigables, de baja toxicidad y con registro DIGESA, aplicados por personal especializado mediante equipos de última generación. Nuestros tratamientos permiten controlar infestaciones de forma efectiva, brindando una adecuada residualidad y minimizando riesgos para las personas, los alimentos y el medio ambiente. 
     `,
-    image: require('@/assets/servicio1.jpeg'),
-    images_large: require('@/assets/Imagen_servicio_desinsectacción_L.png'),
-    image_home: require('@/assets/insect.svg'),
+    image: require('@/assets/about-image.png'),
+    images_large: require('@/assets/about-image.png'),
+    image_home: require('@/assets/bird.svg'),
     details_button: 'Detalles',
     // añadir videos en siguentes actualizaciones
     video1: '',
@@ -22,8 +22,8 @@ export default [
     longDescription: `
         Aplicamos desinfectantes biodegradables, de baja toxicidad y sin residuos, efectivos contra virus, bacterias, hongos y mohos. Nuestros tratamientos ayudan a reducir el riesgo de enfermedades y contribuyen a mantener espacios más seguros, higiénicos y saludables.
     `,
-    image: require('@/assets/servicio2.png'),
-    images_large: require('@/assets/Imagen_servicio_desinfección_L.png'),
+    image: require('@/assets/about-image.png'),
+    images_large: require('@/assets/about-image.png'),
     image_home: require('@/assets/virus.svg'),
     details_button: 'Detalles',
     // añadir videos en siguentes actualizaciones
@@ -41,8 +41,8 @@ export default [
         Seguimos las técnicas descritas en el Protocolo para la Vigilancia y
         Control de Roedores Sinantrópicos de la OMS.
     `,
-    image: require('@/assets/servicio3.jpeg'),
-    images_large: require('@/assets/Imagen_servicio_desratización_L.png'),
+    image: require('@/assets/about-image.png'),
+    images_large: require('@/assets/about-image.png'),
     image_home: require('@/assets/rodent.svg'),
     details_button: 'Detalles',
     // añadir videos en siguentes actualizaciones
@@ -56,8 +56,8 @@ export default [
     longDescription: `
       Realizamos la remoción de sedimentos, limpieza de superficies y desinfección utilizando productos autorizados y procedimientos especializados que contribuyen a mantener el agua limpia y segura, conforme a los estándares sanitarios vigentes. Nuestro personal está capacitado para ejecutar estas labores de manera segura y eficiente.
     `,
-    image: require('@/assets/servicio4_1.png'),
-    images_large: require('@/assets/Imagen_servicio_limpieza_tanques_L.jpeg'),
+    image: require('@/assets/about-image.png'),
+    images_large: require('@/assets/about-image.png'),
     image_home: require('@/assets/moisture.svg'),
     details_button: 'Detalles',
     // añadir videos en siguentes actualizaciones
@@ -71,8 +71,8 @@ export default [
     longDescription: `
       Realizamos inspecciones periódicas, monitoreo de plagas, evaluaciones técnicas, asesoría especializada e informes de gestión detallados. Nuestro objetivo es prevenir infestaciones, optimizar los resultados y garantizar la tranquilidad de nuestros clientes.
     `,
-    image: require('@/assets/servicio5.png'), // Cambiar la imagen si se tiene una mejor
-    images_large: require('@/assets/monitoreo_large.png'),
+    image: require('@/assets/about-image.png'),
+    images_large: require('@/assets/about-image.png'),
     image_home: require('@/assets/monitoring.svg'),
     details_button: 'Detalles',
     // añadir videos en siguentes actualizaciones
