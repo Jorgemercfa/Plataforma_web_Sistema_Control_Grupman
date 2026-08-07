@@ -13,7 +13,7 @@ import QuotesDetails from '@/views/AdminViews/Quotes-item.vue';
 import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
 import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
-import ClientSingle from '@/views/AdminViews/Client-sigle-view.vue';
+import ClientSingle from '@/views/AdminViews/Client-single-view.vue';
 import LocalDetails from '@/views/AdminViews/Local-detail-view.vue';
 // Admin views Financial
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
