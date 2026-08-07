@@ -13,6 +13,7 @@ import QuotesDetails from '@/views/AdminViews/Quotes-item.vue';
 import VisitorDetails from '@/views/AdminViews/Visits-item.vue';
 import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
+import ClientSingle from '@/views/AdminViews/Client-single-view.vue';
 // Admin views Financial
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
@@ -122,6 +123,15 @@ const routes = [
     component: ServicesDetails,
     meta: {
       title: 'Servicios | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+   {
+    path: '/admin/clientes/:id',
+    name: 'ClientSingle',
+    component: ClientSingle,
+    meta: {
+      title: 'Detalle del Cliente | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
