@@ -34,7 +34,7 @@ const menu = [
     seccion: 'Finanzas',
     icono: '💰',
     items: [
-      { label: 'Resumen',      icon: '📊', ruta: '/admin/finanzas' },
+      { label: 'Resumen',      icon: '📊', ruta: '/Financial-summary' },
       { label: 'Facturas',     icon: '🧾', ruta: '/Invoice-item' },
       { label: 'Proveedores',  icon: '🚚', ruta: '/Suppliers-item' },
       { label: 'Compras',      icon: '🛒', ruta: '/admin/finanzas/compras' }, //Revisar y ver si se queda o no
