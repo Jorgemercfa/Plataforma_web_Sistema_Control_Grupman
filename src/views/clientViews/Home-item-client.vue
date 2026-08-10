@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 // Reemplazamos el layout del admin por el navbar/sidebar del cliente
-import layoutNavbarClient from '../../components/clientComponents/layoutNavbarClient.vue';
+import layoutNavbarClient from '@/components/clientComponents/layoutNavbarClient.vue';
 
 /* ── Nombre del Cliente / Usuario ─────────────────── */
 const clienteNombre = ref('Restaurante El Olivo');
