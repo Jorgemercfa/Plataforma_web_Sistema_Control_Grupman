@@ -31,18 +31,18 @@ const handleSubmit = () => {
 
   // Lógica de recuperación
   successMsg.value = 'Contraseña actualizada correctamente.';
-  setTimeout(() => router.push({ name: 'SignInAdmin' }), 1500);
+  setTimeout(() => router.push({ name: 'ClientSignIn' }), 1500);
 };
 </script>
 
 <template>
   <div class="signin-page">
-    <RouterLink to="/SignInAdmin" class="return-main-view">Regresar</RouterLink>
+    <RouterLink to="/SignInClient" class="return-main-view">Regresar</RouterLink>
 
     <div class="signin-card">
       <!-- Encabezado -->
       <div class="signin-header">
-        <h1 class="signin-title">Recuperar Contraseña Administración</h1>
+        <h1 class="signin-title">Recuperar Contraseña Clientes</h1>
         <p class="signin-subtitle">Grupman</p>
       </div>
 
@@ -93,6 +93,8 @@ const handleSubmit = () => {
         <button type="submit" class="btn btn-primary">
           Actualizar contraseña
         </button>
+
+        <!-- Botón Secundario (Cancelar / Volver) -->
 
       </form>
     </div>

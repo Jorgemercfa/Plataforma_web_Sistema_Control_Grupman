@@ -59,7 +59,7 @@ const handleSubmit = () => {
         <button 
           type="button" 
           class="btn btn-outline"
-          @click="router.push('/Forget-password')"
+          @click="router.push('/SignInClient')"
         >
           Olvidé Contraseña
         </button>

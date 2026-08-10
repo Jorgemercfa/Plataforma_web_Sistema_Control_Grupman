@@ -29,6 +29,7 @@ import WorkerHours from '@/views/AdminViews/Worker-hours-work.vue';
 
 //Operator Views
 import OperatorSignIn from '@/views/operatorViews/Operator-sign-in.vue';
+import ForgetPasswordOperator from '@/views/operatorViews/Forget-password-operator.vue';
 import HomeItemOperator from '@/views/operatorViews/Home-operator-item.vue';
 import VisitorDetailsOperator from '@/views/operatorViews/Visits-operator-item.vue';
 import InventoryDetailsOperator from '@/views/operatorViews/Inventory-operator-item.vue';
@@ -39,6 +40,7 @@ import VisitFormview from '@/views/operatorViews/VisitFormview.vue';
 
 // Client views
 import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
+import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 
 const routes = [
@@ -244,6 +246,15 @@ const routes = [
     },
   },
   {
+    path: '/Forget-password-operator',
+    name: 'ForgetPasswordOperator',
+    component: ForgetPasswordOperator,
+    meta: {
+      title: 'Recuperar contraseña Operador | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
     path: '/Home-item-operator',
     name: 'HomeItemOperator',
     component: HomeItemOperator,
@@ -316,7 +327,15 @@ const routes = [
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
-  // Client views
+  {
+    path: '/Forget-password-client',
+    name: 'ForgetPasswordClient',
+    component: ForgetPasswordClient,
+    meta: {
+      title: 'Recuperar contraseña Cliente | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
   {
     path: '/Home-item-client',
     name: 'HomeItemClient',
