@@ -37,7 +37,7 @@ const handleSubmit = () => {
 
 <template>
   <div class="signin-page">
-    <RouterLink to="/Forget-password-operator" class="return-main-view">Regresar</RouterLink>
+    <RouterLink to="/Operator-sign-in" class="return-main-view">Regresar</RouterLink>
 
     <div class="signin-card">
       <!-- Encabezado -->
