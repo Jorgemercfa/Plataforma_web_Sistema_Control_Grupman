@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue'
+import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue'
 
 /* ── Datos mock (reemplazar por agregados reales de facturas/gastos) ── */
 const meses = [

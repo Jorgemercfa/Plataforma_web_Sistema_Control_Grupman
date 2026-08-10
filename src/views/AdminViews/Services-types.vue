@@ -1,5 +1,5 @@
 <script setup>
-import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue';
+import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue';
 </script>
 
 <template>

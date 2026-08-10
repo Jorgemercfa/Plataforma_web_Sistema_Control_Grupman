@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import layoutNavbarOperator from '../../components/operatorComponets/layoutNavbarOperator.vue';
+import layoutNavbarOperator from '../../components/operatorComponents/layoutNavbarOperator.vue';
 
 const route  = useRoute();
 const router = useRouter();

@@ -1,6 +1,6 @@
 <script setup>
 // import { ref, computed } from 'vue';
-import layoutNavbarOperator from '../../components/operatorComponets/layoutNavbarOperator.vue';
+import layoutNavbarOperator from '../../components/operatorComponents/layoutNavbarOperator.vue';
 </script>
 
 <template>

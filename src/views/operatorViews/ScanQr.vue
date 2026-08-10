@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import layoutNavbarOperator from '../../components/operatorComponets/layoutNavbarOperator.vue';
+import layoutNavbarOperator from '../../components/operatorComponents/layoutNavbarOperator.vue';
 
 /* ── Estado del escáner ───────────────────────────── */
 const estado = ref('idle'); // idle | scanning | resultado | error

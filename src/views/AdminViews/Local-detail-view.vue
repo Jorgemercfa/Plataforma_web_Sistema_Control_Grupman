@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import layoutNavbarAdmin from '../../components/adminComponets/layoutNavbarAdmin.vue'
+import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue'
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js'
 import { localesProvisionales } from '../../data/provisionalLocalesData.js'
 import { estacionesProvisionales } from '../../data/provisionalStationsData.js'
