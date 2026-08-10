@@ -39,6 +39,7 @@ import VisitFormview from '@/views/operatorViews/VisitFormview.vue';
 
 // Client views
 import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
+import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 
 const routes = [
   // Vistas principales
@@ -312,6 +313,16 @@ const routes = [
     component: ClientSignIn,
     meta: {
       title: 'Iniciar sesión Cliente | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  // Client views
+  {
+    path: '/Home-item-client',
+    name: 'HomeItemClient',
+    component: HomeItemClient,
+    meta: {
+      title: 'Inicio Cliente | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
