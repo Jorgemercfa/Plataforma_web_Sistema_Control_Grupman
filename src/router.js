@@ -44,8 +44,9 @@ import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 import LocalDetailsClient from '@/views/clientViews/Local-detail-client.vue';
-import ServicesClient from '@/views/clientViews/Services-client-item.vue';
-import ServicesDetailClient from '@/views/clientViews/Services-details-client-item.vue';
+// NOTE: filenames in repo use "Sevices-..." (typo). Point imports to existing files.
+import ServicesClient from '@/views/clientViews/Sevices-client-item.vue';
+import ServicesDetailClient from '@/views/clientViews/Sevices-details-client-item.vue';
 
 const routes = [
   // Vistas principales
