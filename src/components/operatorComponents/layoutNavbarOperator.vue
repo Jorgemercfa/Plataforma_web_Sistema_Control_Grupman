@@ -27,8 +27,10 @@ const menu = [
     icono: '🛠️',
     items: [
       { label: 'Inicio',     icon: '▦',  ruta: '/Home-item-operator' },
+      { label: 'Mis visitas', icon: '🗓️', ruta: '/tecnico/mis-visitas' },
       { label: 'Visitas',    icon: '📅', ruta: '/Visits-item-operator' },
       { label: 'Inventario', icon: '📦', ruta: '/Inventory-item-operator' },
+      { label: 'Escanear QR', icon: '🔍', ruta: '/tecnico/escanear-qr' },
       { label: 'Servicios',  icon: '🔧', ruta: '/Services-item' },
     ],
   },
@@ -196,7 +198,7 @@ const cerrarSesion = () => {
               <button type="button" class="dropdown-item">👤 &nbsp;Mi perfil</button>
               <button type="button" class="dropdown-item">⚙️ &nbsp;Configuración</button>
               <div class="dropdown-divider"></div>
-              
+
               <!-- Botón funcional de Cerrar Sesión -->
               <button 
                 type="button" 
@@ -316,7 +318,7 @@ const cerrarSesion = () => {
 }
 
 .sidebar-toggle:hover { background: rgba(255,255,255,0.13); }
-.toggle-icon { line-height: 1; }
+.sidebar-toggle .toggle-icon { line-height: 1; }
 
 /* Navegación */
 .sidebar-nav {
