@@ -44,9 +44,10 @@ import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 import LocalDetailsClient from '@/views/clientViews/Local-detail-client.vue';
-// NOTE: filenames in repo use "Sevices-..." (typo). Point imports to existing files.
 import ServicesClient from '@/views/clientViews/Sevices-client-item.vue';
 import ServicesDetailClient from '@/views/clientViews/Sevices-details-client-item.vue';
+import RequestModalService from '@/views/clientViews/Request-Modal-Service.vue';
+import ClientInvoiceDetails from '@/views/clientViews/Client-Invoices.vue';
 
 const routes = [
   // Vistas principales
@@ -383,6 +384,24 @@ const routes = [
     component: ServicesDetailClient,
     meta: {
       title: 'Detalles de los Servicios | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/RequestModalService',
+    name: 'RequestModalService',
+    component: RequestModalService,
+    meta: {
+      title: 'Solicitudes de Servicio | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/ClientInvoiceDetails',
+    name: 'ClientInvoiceDetails',
+    component: ClientInvoiceDetails,
+    meta: {
+      title: 'Facturas y Pagos | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },

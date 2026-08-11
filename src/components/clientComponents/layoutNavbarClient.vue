@@ -27,10 +27,11 @@ const menu = [
     icono: '🛠️',
     items: [
       { label: 'Inicio',     icon: '▦',  ruta: '/Home-item-client' },
-      { label: 'Mis Locales / Sedes', icon: '', ruta: '/LocalDetailsClient' },
+      { label: 'Mis Locales / Sedes', icon: '🏢', ruta: '/LocalDetailsClient' },
       { label: 'Mis Servicios',      icon: '🔧', ruta: '/ServicesClient' },
       { label: 'Detalle del Servicio y Reporte Técnico',   icon: '📋', ruta: '/ServicesDetailClient' },
-      // { label: 'Mis Facturas y Pagos',    icon: '', ruta: '/Services-item' },
+      { label: 'Solicitudes de Servicio', icon: '📨', ruta: '/RequestModalService' },
+      { label: 'Mis Facturas y Pagos',    icon: '🧾', ruta: '/ClientInvoiceDetails' },
     ],
   },
 ];
