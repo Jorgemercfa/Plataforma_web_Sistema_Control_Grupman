@@ -44,6 +44,7 @@ import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 import LocalDetailsClient from '@/views/clientViews/Local-detail-client.vue';
+import ServicesClient from '@/views/clientViews/Services-client-item.vue';
 
 const routes = [
   // Vistas principales
@@ -362,6 +363,15 @@ const routes = [
     component: LocalDetailsClient,
     meta: {
       title: 'Detalle del Local | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/ServicesClient',
+    name: 'ServicesClient',
+    component: ServicesClient,
+    meta: {
+      title: 'Servicios | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
