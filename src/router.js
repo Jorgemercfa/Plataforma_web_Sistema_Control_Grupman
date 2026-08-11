@@ -37,6 +37,7 @@ import WorkSchedulesOperator from '@/views/operatorViews/Work-schedules-operator
 import ScanQr from '@/views/operatorViews/ScanQr.vue';
 import VisitDetailOperator from '@/views/operatorViews/VisitDetailOperator.vue';
 import VisitFormview from '@/views/operatorViews/VisitFormview.vue';
+import MyVisitsOperator from '@/views/operatorViews/MyVisits-operator.vue';
 
 // Client views
 import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
@@ -60,7 +61,7 @@ const routes = [
     component: ManualFeature,
     meta: {
       title: 'Manual de usuario | Plataforma Grupman',
-      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+      description: 'Manual de usuario | Plataforma Grupman',
     },
   },
   // Rutas de administración
@@ -288,6 +289,15 @@ const routes = [
     meta: {
       title: 'Horarios de Trabajo | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/tecnico/mis-visitas',
+    name: 'MyVisitsOperator',
+    component: MyVisitsOperator,
+    meta: {
+      title: 'Mis visitas | Plataforma Grupman',
+      description: 'Visitas asignadas al técnico | Plataforma Grupman',
     },
   },
   {
