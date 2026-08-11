@@ -305,7 +305,7 @@ const cerrarModal = () => {
   display: flex; justify-content: flex-end; gap: 10px;
 }
 .btn-cancel { background: #fff; border: 1px solid #d1d5db; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
-.btn-submit { background: #42ae1a; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.btn-submit { background: #42ae1a; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; }
 .btn-submit:hover:not(:disabled) { background: #379614; }
 
 /* Estado Exitoso */
