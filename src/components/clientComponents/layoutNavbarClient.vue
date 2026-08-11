@@ -12,9 +12,9 @@ const toggleSidebar = () => { collapsed.value = !collapsed.value; };
 
 /* ── Usuario mock (sin Firebase por ahora) ── */
 const usuario = {
-  nombre: 'Carlos Mendoza',
+  nombre: 'Manuel Lopez',
   rol: 'Cliente',
-  iniciales: 'CM',
+  iniciales: 'ML',
 };
 
 /* ── Notificaciones mock ── */

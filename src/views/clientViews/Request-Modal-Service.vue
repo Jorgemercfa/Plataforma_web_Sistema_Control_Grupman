@@ -1,10 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import layoutNavbarClient from '../../components/clientComponents/layoutNavbarClient.vue'
 
-// Control del modal / emisión de eventos
-defineProps({
-  mostrar: { type: Boolean, default: false }
-})
+// Emitir eventos si necesitas notificar a una vista superior
 const emit = defineEmits(['cerrar', 'solicitud-enviada'])
 
 // Sedes registradas del cliente
@@ -18,7 +16,7 @@ const sedes = ref([
 const tiposServicio = ref([
   { id: 'desinsectacion', nombre: 'Desinsectación', icono: 'ti-bug' },
   { id: 'desratizacion', nombre: 'Desratización / Control de Roedores', icono: 'ti-mouse' },
-  { id: 'desinfeccion', nombre: 'Desinfección / Sanutización', icono: 'ti-virus-off' },
+  { id: 'desinfeccion', nombre: 'Desinfección / Sanitización', icono: 'ti-virus-off' },
   { id: 'limpieza_tanques', nombre: 'Limpieza de Cisternas / Tanques', icono: 'ti-droplet' }
 ])
 
@@ -64,12 +62,12 @@ const enviarSolicitud = () => {
     exito.value = true
     setTimeout(() => {
       emit('solicitud-enviada', { ...form.value })
-      cerrarModal()
-    }, 1800)
+      resetForm()
+    }, 2000)
   }, 1200)
 }
 
-const cerrarModal = () => {
+const resetForm = () => {
   exito.value = false
   cargando.value = false
   form.value = {
@@ -81,174 +79,175 @@ const cerrarModal = () => {
     comentarios: '',
     archivos: []
   }
-  emit('cerrar')
 }
 </script>
 
 <template>
-  <div v-if="mostrar" class="modal-overlay" @click.self="cerrarModal">
-    <div class="modal-card">
+  <layoutNavbarClient>
+    <div class="form-page-container">
+      <div class="form-card">
 
-      <!-- Cabecera -->
-      <div class="modal-header">
-        <div>
-          <h2 class="modal-title">Solicitar Servicio Extra / Agenda</h2>
-          <p class="modal-sub">Programa un servicio adicional o atiende una incidencia puntual en tus sedes.</p>
-        </div>
-        <button class="btn-close" @click="cerrarModal"><i class="ti ti-x"></i></button>
-      </div>
-
-      <!-- Estado Exitoso -->
-      <div v-if="exito" class="success-state">
-        <div class="success-icon"><i class="ti ti-circle-check"></i></div>
-        <h3>¡Solicitud Enviada con Éxito!</h3>
-        <p>Un supervisor revisará tu requerimiento y te confirmará la asignación a la brevedad.</p>
-      </div>
-
-      <!-- Formulario -->
-      <div v-else class="modal-body">
-
-        <!-- 1. Selección de Sede -->
-        <div class="form-group">
-          <label class="form-label">Sede / Local donde se requiere el servicio <span class="req">*</span></label>
-          <select v-model="form.sedeId" class="form-select">
-            <option value="" disabled>Selecciona una sede...</option>
-            <option v-for="s in sedes" :key="s.id" :value="s.id">{{ s.nombre }}</option>
-          </select>
-        </div>
-
-        <!-- 2. Tipo de Servicio (Checkbox en Cards) -->
-        <div class="form-group">
-          <label class="form-label">Tratamiento(s) Requerido(s) <span class="req">*</span></label>
-          <div class="services-grid">
-            <div 
-              v-for="s in tiposServicio" 
-              :key="s.id" 
-              :class="['service-option', { active: form.serviciosSeleccionados.includes(s.id) }]"
-              @click="toggleServicio(s.id)"
-            >
-              <i :class="['ti', s.icono]"></i>
-              <span>{{ s.nombre }}</span>
-            </div>
+        <!-- Cabecera -->
+        <div class="form-header">
+          <div>
+            <h2 class="form-title">Solicitar Servicio Extra / Agenda</h2>
+            <p class="form-sub">Programa un servicio adicional o atiende una incidencia puntual en tus sedes.</p>
           </div>
         </div>
 
-        <!-- 3. Urgencia y Agenda -->
-        <div class="form-row-2">
+        <!-- Estado Exitoso -->
+        <div v-if="exito" class="success-state">
+          <div class="success-icon"><i class="ti ti-circle-check"></i></div>
+          <h3>¡Solicitud Enviada con Éxito!</h3>
+          <p>Un supervisor revisará tu requerimiento y te confirmará la asignación a la brevedad.</p>
+        </div>
+
+        <!-- Formulario -->
+        <div v-else class="form-body">
+
+          <!-- 1. Selección de Sede -->
           <div class="form-group">
-            <label class="form-label">Nivel de Urgencia</label>
-            <div class="urgency-selector">
-              <button 
-                type="button"
-                :class="['urgency-btn', { active: form.urgencia === 'normal' }]"
-                @click="form.urgencia = 'normal'"
-              >Normal</button>
-              <button 
-                type="button"
-                :class="['urgency-btn urgency--amber', { active: form.urgencia === 'alta' }]"
-                @click="form.urgencia = 'alta'"
-              >Prioritaria</button>
-              <button 
-                type="button"
-                :class="['urgency-btn urgency--red', { active: form.urgencia === 'emergencia' }]"
-                @click="form.urgencia = 'emergencia'"
-              >Emergencia</button>
+            <label class="form-label">Sede / Local donde se requiere el servicio <span class="req">*</span></label>
+            <select v-model="form.sedeId" class="form-select">
+              <option value="" disabled>Selecciona una sede...</option>
+              <option v-for="s in sedes" :key="s.id" :value="s.id">{{ s.nombre }}</option>
+            </select>
+          </div>
+
+          <!-- 2. Tipo de Servicio (Checkbox en Cards) -->
+          <div class="form-group">
+            <label class="form-label">Tratamiento(s) Requerido(s) <span class="req">*</span></label>
+            <div class="services-grid">
+              <div 
+                v-for="s in tiposServicio" 
+                :key="s.id" 
+                :class="['service-option', { active: form.serviciosSeleccionados.includes(s.id) }]"
+                @click="toggleServicio(s.id)"
+              >
+                <i :class="['ti', s.icono]"></i>
+                <span>{{ s.nombre }}</span>
+              </div>
             </div>
           </div>
 
+          <!-- 3. Urgencia y Agenda -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Nivel de Urgencia</label>
+              <div class="urgency-selector">
+                <button 
+                  type="button"
+                  :class="['urgency-btn', { active: form.urgencia === 'normal' }]"
+                  @click="form.urgencia = 'normal'"
+                >Normal</button>
+                <button 
+                  type="button"
+                  :class="['urgency-btn urgency--amber', { active: form.urgencia === 'alta' }]"
+                  @click="form.urgencia = 'alta'"
+                >Prioritaria</button>
+                <button 
+                  type="button"
+                  :class="['urgency-btn urgency--red', { active: form.urgencia === 'emergencia' }]"
+                  @click="form.urgencia = 'emergencia'"
+                >Emergencia</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Fecha Tentativa</label>
+              <input type="date" v-model="form.fechaSugerida" class="form-input" />
+            </div>
+          </div>
+
+          <!-- Horario Turno -->
           <div class="form-group">
-            <label class="form-label">Fecha Tentativa</label>
-            <input type="date" v-model="form.fechaSugerida" class="form-input" />
+            <label class="form-label">Turno Preferido</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" value="mañana" v-model="form.horarioSugerido" /> Mañana (08:00 AM - 12:00 PM)
+              </label>
+              <label class="radio-label">
+                <input type="radio" value="tarde" v-model="form.horarioSugerido" /> Tarde (02:00 PM - 06:00 PM)
+              </label>
+              <label class="radio-label">
+                <input type="radio" value="noche" v-model="form.horarioSugerido" /> Nocturno (Fuera de horario comercial)
+              </label>
+            </div>
           </div>
+
+          <!-- 4. Detalles de la Incidencia -->
+          <div class="form-group">
+            <label class="form-label">Detalles / Observaciones del problema</label>
+            <textarea 
+              v-model="form.comentarios" 
+              class="form-textarea" 
+              rows="3" 
+              placeholder="Ej. Se detectó presencia de insectos en el área de cocina/almacén..."
+            ></textarea>
+          </div>
+
+          <!-- 5. Adjuntar Fotografías/Evidencias -->
+          <div class="form-group">
+            <label class="form-label">Adjuntar Fotografías del Área / Problema (Opcional)</label>
+            <div class="file-dropzone">
+              <input type="file" multiple @change="handleFileUpload" id="file-upload" class="file-input" accept="image/*" />
+              <label for="file-upload" class="file-label">
+                <i class="ti ti-upload"></i>
+                <span>Haz clic para subir fotos o arrastra los archivos aquí</span>
+              </label>
+            </div>
+            <div v-if="form.archivos.length" class="file-list">
+              <small v-for="(f, i) in form.archivos" :key="i" class="file-chip">
+                <i class="ti ti-photo"></i> {{ f }}
+              </small>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Horario Turno -->
-        <div class="form-group">
-          <label class="form-label">Turno Preferido</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" value="mañana" v-model="form.horarioSugerido" /> Mañana (08:00 AM - 12:00 PM)
-            </label>
-            <label class="radio-label">
-              <input type="radio" value="tarde" v-model="form.horarioSugerido" /> Tarde (02:00 PM - 06:00 PM)
-            </label>
-            <label class="radio-label">
-              <input type="radio" value="noche" v-model="form.horarioSugerido" /> Nocturno (Fuera de horario comercial)
-            </label>
-          </div>
-        </div>
-
-        <!-- 4. Detalles de la Incidencia -->
-        <div class="form-group">
-          <label class="form-label">Detalles / Observaciones del problema</label>
-          <textarea 
-            v-model="form.comentarios" 
-            class="form-textarea" 
-            rows="3" 
-            placeholder="Ej. Se detectó presencia de insectos en el área de cocina/almacén..."
-          ></textarea>
-        </div>
-
-        <!-- 5. Adjuntar Fotografías/Evidencias -->
-        <div class="form-group">
-          <label class="form-label">Adjuntar Fotografías del Área / Problema (Opcional)</label>
-          <div class="file-dropzone">
-            <input type="file" multiple @change="handleFileUpload" id="file-upload" class="file-input" accept="image/*" />
-            <label for="file-upload" class="file-label">
-              <i class="ti ti-upload"></i>
-              <span>Haz clic para subir fotos o arrastra los archivos aquí</span>
-            </label>
-          </div>
-          <div v-if="form.archivos.length" class="file-list">
-            <small v-for="(f, i) in form.archivos" :key="i" class="file-chip">
-              <i class="ti ti-photo"></i> {{ f }}
-            </small>
-          </div>
+        <!-- Acciones / Footer -->
+        <div v-if="!exito" class="form-footer">
+          <button class="btn-cancel" @click="resetForm" :disabled="cargando">Limpiar</button>
+          <button class="btn-submit" @click="enviarSolicitud" :disabled="cargando">
+            <i class="ti" :class="cargando ? 'ti-loader spin' : 'ti-send'"></i>
+            <span>{{ cargando ? 'Enviando...' : 'Enviar Solicitud' }}</span>
+          </button>
         </div>
 
       </div>
-
-      <!-- Acciones / Footer -->
-      <div v-if="!exito" class="modal-footer">
-        <button class="btn-cancel" @click="cerrarModal" :disabled="cargando">Cancelar</button>
-        <button class="btn-submit" @click="enviarSolicitud" :disabled="cargando">
-          <i class="ti" :class="cargando ? 'ti-loader spin' : 'ti-send'"></i>
-          {{ cargando ? 'Enviando...' : 'Enviar Solicitud' }}
-        </button>
-      </div>
-
     </div>
-  </div>
+  </layoutNavbarClient>
 </template>
 
 <style scoped>
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(17, 24, 39, 0.5); backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 999; padding: 16px;
+.form-page-container {
+  padding: 24px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.modal-card {
-  background: #fff; border-radius: 16px; width: 100%; max-width: 640px;
-  max-height: 90vh; display: flex; flex-direction: column;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); overflow: hidden;
+.form-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
   font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 /* Header */
-.modal-header {
-  padding: 20px 24px; border-bottom: 1px solid #f3f4f6;
-  display: flex; justify-content: space-between; align-items: flex-start;
+.form-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  background: #f9fafb;
 }
-.modal-title { font-size: 18px; font-weight: 700; color: #111827; margin: 0 0 4px; }
-.modal-sub { font-size: 12.5px; color: #6b7280; margin: 0; }
-.btn-close { background: none; border: none; font-size: 20px; color: #9ca3af; cursor: pointer; }
-.btn-close:hover { color: #111827; }
+.form-title { font-size: 18px; font-weight: 700; color: #111827; margin: 0 0 4px; }
+.form-sub { font-size: 12.5px; color: #6b7280; margin: 0; }
 
 /* Body */
-.modal-body { padding: 20px 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+.form-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
 
 /* Form Controls */
 .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -300,12 +299,12 @@ const cerrarModal = () => {
 .file-chip { background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
 
 /* Footer */
-.modal-footer {
+.form-footer {
   padding: 16px 24px; border-top: 1px solid #f3f4f6; background: #fafafa;
   display: flex; justify-content: flex-end; gap: 10px;
 }
 .btn-cancel { background: #fff; border: 1px solid #d1d5db; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
-.btn-submit { background: #42ae1a; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; }
+.btn-submit { background: #42ae1a; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
 .btn-submit:hover:not(:disabled) { background: #379614; }
 
 /* Estado Exitoso */

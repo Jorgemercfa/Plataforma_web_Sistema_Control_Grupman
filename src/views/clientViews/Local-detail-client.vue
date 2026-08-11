@@ -1,27 +1,65 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue'
+import layoutNavbarClient from '../../components/clientComponents/layoutNavbarClient.vue'
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js'
 import { localesProvisionales } from '../../data/provisionalLocalesData.js'
 import { estacionesProvisionales } from '../../data/provisionalStationsData.js'
 
 const route = useRoute()
 
-/* ── Local buscado por ID ──────────────────────────── */
-const local = computed(() =>
-  localesProvisionales.find((l) => String(l.id) === String(route.params.localId))
-)
+/* ── Fallback mock por si no hay parámetros en la URL ── */
+const localMock = {
+  id: 1,
+  nombre: 'Sede Miraflores - Av. Larco',
+  direccion: 'Av. José Larco 456, Miraflores, Lima',
+  contacto: 'Carlos Mendoza',
+  telefono: '+51 987 654 321',
+  tipo: 'Sede Comercial',
+  ultimaInspeccion: '10 Ago, 2026'
+}
 
-/* ── Cliente dueño del local ───────────────────────── */
-const cliente = computed(() =>
-  clientesProvisionales.find((c) => String(c.id) === String(route.params.clientId))
-)
+const clienteMock = {
+  id: 1,
+  razonSocial: 'Corporación Gastronómica S.A.C.'
+}
 
-/* ── Estaciones del local ──────────────────────────── */
-const estaciones = computed(() =>
-  estacionesProvisionales.filter((e) => String(e.localId) === String(route.params.localId))
-)
+const estacionesMock = [
+  { id: 10, localId: 1, codigo: 'EST-MIRA-01', tipo: 'Cebadero Roedores', ubicacion: 'Almacén Principal - Área A', ultimoHallazgo: 'Sin Actividad', estado: 'Activa' },
+  { id: 11, localId: 1, codigo: 'EST-MIRA-02', tipo: 'Cebadero Roedores', ubicacion: 'Zona de Carga y Descarga', ultimoHallazgo: 'Consumo Parcial (10%)', estado: 'Revisar' },
+  { id: 12, localId: 1, codigo: 'EST-MIRA-03', tipo: 'Lámpara UV Insectos', ubicacion: 'Cocina Principal', ultimoHallazgo: 'Captura Normal (Lepidópteros)', estado: 'Activa' },
+  { id: 13, localId: 1, codigo: 'EST-MIRA-04', tipo: 'Trampa de Pegamento', ubicacion: 'Pasadizo Técnico Directivo', ultimoHallazgo: 'Limpio', estado: 'Activa' }
+]
+
+/* ── Local (Búsqueda o Fallback) ───────────────────── */
+const local = computed(() => {
+  const found = localesProvisionales.find((l) => String(l.id) === String(route.params.localId))
+  return found || localMock // Devuelve el mock si no encuentra en provisionales
+})
+
+/* ── Cliente (Búsqueda o Fallback) ─────────────────── */
+const cliente = computed(() => {
+  const found = clientesProvisionales.find((c) => String(c.id) === String(route.params.clientId))
+  return found || clienteMock
+})
+
+/* ── Estaciones (Búsqueda o Fallback) ──────────────── */
+const estaciones = computed(() => {
+  const filtered = estacionesProvisionales.filter((e) => String(e.localId) === String(route.params.localId))
+  return filtered.length ? filtered : estacionesMock
+})
+
+/* ── Próximas Visitas Programadas ───────────────────── */
+const proximasVisitas = ref([
+  { id: 101, localId: 1, local: 'Sede Miraflores - Av. Larco', fecha: '18 Ago, 2026', hora: '09:30 AM', tipo: 'Desinsectación Integral', tecnico: 'Luis Torres', estado: 'programada' },
+  { id: 102, localId: 1, local: 'Sede Miraflores - Av. Larco', fecha: '02 Sep, 2026', hora: '11:00 AM', tipo: 'Control de Roedores', tecnico: 'Ana Quispe', estado: 'programada' },
+  { id: 103, localId: 2, local: 'Almacén Central', fecha: '28 Ago, 2026', hora: '03:00 PM', tipo: 'Desinfección Ambiental', tecnico: 'Por asignar', estado: 'programada' },
+])
+
+const visitasDelLocal = computed(() => {
+  if (!local.value) return []
+  return proximasVisitas.value.filter(v => String(v.localId) === String(local.value.id) || v.local === local.value.nombre)
+})
 
 /* ── Métricas calculadas para lectura rápida ──────── */
 const totalEstaciones = computed(() => estaciones.value.length)
@@ -36,14 +74,14 @@ const estadoClass = (estado) => ({
 </script>
 
 <template>
-  <layoutNavbarAdmin>
+  <layoutNavbarClient>
     <div class="dashboard" v-if="local">
 
       <!-- Breadcrumb -->
       <div class="breadcrumb">
         <router-link to="/Client-detail">Clientes</router-link>
         <span>/</span>
-        <router-link :to="`/admin/clientes/${route.params.clientId}`">
+        <router-link :to="`/Client/clientes/${route.params.clientId || cliente.id}`">
           {{ cliente ? cliente.razonSocial : 'Cliente' }}
         </router-link>
         <span>/</span>
@@ -77,6 +115,10 @@ const estadoClass = (estado) => ({
           <span class="metric-label">Por Revisar</span>
           <span class="metric-value text-amber">{{ estacionesRevisar }}</span>
         </div>
+        <div class="metric-card">
+          <span class="metric-label">Visitas Programadas</span>
+          <span class="metric-value text-blue">{{ visitasDelLocal.length }}</span>
+        </div>
       </div>
 
       <!-- Información General del Local -->
@@ -104,6 +146,45 @@ const estadoClass = (estado) => ({
             <span class="info-label">Última Inspección:</span>
             <span class="info-value">{{ local.ultimaInspeccion || 'Reciente' }}</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Próximas Visitas / Agenda -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="ti ti-calendar-event" aria-hidden="true"></i>
+            Próximas Visitas Programadas ({{ visitasDelLocal.length }})
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>Fecha y Hora</th>
+                <th>Servicio / Tratamiento</th>
+                <th>Técnico Asignado</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="v in visitasDelLocal" :key="v.id">
+                <td class="cell-main">
+                  <div>{{ v.fecha }}</div>
+                  <small class="text-sub">{{ v.hora }}</small>
+                </td>
+                <td><span class="badge badge--blue">{{ v.tipo }}</span></td>
+                <td class="cell-sub">{{ v.tecnico }}</td>
+                <td>
+                  <span class="badge badge--green">Programada</span>
+                </td>
+              </tr>
+              <tr v-if="!visitasDelLocal.length">
+                <td colspan="4" class="cell-vacio">No hay visitas o tratamientos programados próximamente para esta sede.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -146,16 +227,7 @@ const estadoClass = (estado) => ({
       </div>
 
     </div>
-
-    <!-- Fallback: Local no encontrado -->
-    <div class="dashboard" v-else>
-      <div class="card not-found">
-        <i class="ti ti-alert-circle icon-not-found"></i>
-        <p>No se encontró ningún local con ese identificador.</p>
-        <router-link to="/Client-detail" class="btn-link">← Volver a Clientes</router-link>
-      </div>
-    </div>
-  </layoutNavbarAdmin>
+  </layoutNavbarClient>
 </template>
 
 <style scoped>
@@ -209,6 +281,8 @@ const estadoClass = (estado) => ({
 .metric-value { font-size: 24px; font-weight: 700; color: #111827; }
 .text-green { color: #2e7d32; }
 .text-amber { color: #d97706; }
+.text-blue { color: #2563eb; }
+.text-sub { font-size: 12px; color: #6b7280; }
 
 /* Tarjetas */
 .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
@@ -254,11 +328,6 @@ const estadoClass = (estado) => ({
 .badge--green { background:#e8f5e9; color:#2e7d32; }
 .badge--amber { background:#fff8e1; color:#92400e; }
 .badge--gray  { background:#f3f4f6; color:#4b5563; }
+.badge--blue  { background:#eff6ff; color:#1d4ed8; }
 .badge--read-only { background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; }
-
-/* Not Found */
-.not-found { padding: 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; color: #6b7280; }
-.icon-not-found { font-size: 36px; color: #ef4444; }
-.btn-link { color: #42ae1a; font-weight: 600; font-size: 13px; text-decoration: none; }
-.btn-link:hover { text-decoration: underline; }
 </style>
