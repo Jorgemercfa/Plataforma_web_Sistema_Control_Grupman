@@ -13,7 +13,7 @@ const toggleSidebar = () => { collapsed.value = !collapsed.value; };
 /* ── Usuario mock (sin Firebase por ahora) ── */
 const usuario = {
   nombre: 'Carlos Mendoza',
-  rol: 'Administrador',
+  rol: 'Cliente',
   iniciales: 'CM',
 };
 
@@ -27,7 +27,7 @@ const menu = [
     icono: '🛠️',
     items: [
       { label: 'Inicio',     icon: '▦',  ruta: '/Home-item-client' },
-      { label: 'Mis Locales / Sedes', icon: '', ruta: '/Quotes-item' },
+      { label: 'Mis Locales / Sedes', icon: '', ruta: '/LocalDetailsClient' },
       { label: 'Mis Servicios',      icon: '🔧', ruta: '/Services-item' },
       { label: 'Detalle del Servicio y Reporte Técnico',   icon: '📋', ruta: '/Inventory-item' },
       // { label: 'Mis Facturas y Pagos',    icon: '🔧', ruta: '/Services-item' },
@@ -158,7 +158,7 @@ const cerrarSesion = () => {
         <!-- Título de la sección actual (slot opcional) -->
         <div class="topbar-left">
           <slot name="titulo">
-            <span class="topbar-title">Panel de administración</span>
+            <span class="topbar-title">Panel del cliente</span>
           </slot>
         </div>
 
