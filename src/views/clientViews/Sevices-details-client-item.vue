@@ -6,6 +6,8 @@ import layoutNavbarClient from '../../components/clientComponents/layoutNavbarCl
 const route = useRoute()
 const router = useRouter()
 
+const cargandoPdf = ref(false)
+
 // Datos del reporte técnico simulado
 const reporte = ref({
   id: route.params.id || 'SRV-2026-042',
@@ -19,7 +21,7 @@ const reporte = ref({
   registroTecnico: 'TEC-8841',
   estado: 'Finalizado',
   
-  // Productos aplicados (Normativa de Sanidad)
+  // Productos aplicados
   productos: [
     { nombre: 'Cipermetrina 20EC', ingrediente: 'Cipermetrina', dosificacion: '50ml / 10L', lote: 'L-2026-X', registroSanitario: 'P-09881' },
     { nombre: 'Ratimor Bloque', ingrediente: 'Bromadiolona 0.005%', dosificacion: '2 bloques/estación', lote: 'R-7721', registroSanitario: 'P-01123' }
@@ -32,10 +34,26 @@ const reporte = ref({
     { codigo: 'EST-03', tipo: 'Cebadero Roedores', ubicacion: 'Almacén Central', hallazgo: 'Sin actividad', estado: 'Ok' }
   ],
 
+  // Evidencia Fotográfica
+  evidencias: [
+    { id: 1, titulo: 'Estación EST-01 Reabastecida', url: 'https://placehold.co/400x300/e2e8f0/475569?text=Evidencia+EST-01' },
+    { id: 2, titulo: 'Aplicación perimetral patio', url: 'https://placehold.co/400x300/e2e8f0/475569?text=Aplicación+Perimetral' }
+  ],
+
   observaciones: 'Se realizó la aplicación perimetral y revisión completa de estaciones de control. El establecimiento cumple con las condiciones higiénico-sanitarias adecuadas.',
   recomendaciones: 'Mantener cerradas las rejillas del almacén central durante el horario nocturno para prevenir ingreso de plagas.',
-  firmaTecnico: 'Juan Pérez - Técnico Responsable'
+  firmaTecnico: 'Juan Pérez - Técnico Responsable',
+  clienteConformidad: 'Carlos Mendoza - Resp. SSOMA'
 })
+
+// Simulación de descarga del PDF
+const descargarPdf = () => {
+  cargandoPdf.value = true
+  setTimeout(() => {
+    cargandoPdf.value = false
+    // Lógica para descargar el documento
+  }, 1200)
+}
 </script>
 
 <template>
@@ -58,8 +76,9 @@ const reporte = ref({
             <p class="page-sub"><i class="ti ti-calendar"></i> {{ reporte.fecha }} ({{ reporte.horaInicio }} - {{ reporte.horaFin }})</p>
           </div>
           <div class="header-actions">
-            <button class="btn-primary" @click="alert('Descargando PDF Oficial...')">
-              <i class="ti ti-file-download"></i> Descargar PDF Certificado
+            <button class="btn-primary" @click="descargarPdf" :disabled="cargandoPdf">
+              <i class="ti" :class="cargandoPdf ? 'ti-loader spin' : 'ti-file-download'"></i>
+              {{ cargandoPdf ? 'Generando PDF...' : 'Descargar PDF Certificado' }}
             </button>
           </div>
         </div>
@@ -148,6 +167,19 @@ const reporte = ref({
         </div>
       </div>
 
+      <!-- Evidencia Fotográfica -->
+      <div class="card" v-if="reporte.evidencias?.length">
+        <div class="card-header">
+          <div class="card-title"><i class="ti ti-camera"></i> Evidencia Fotográfica del Servicio</div>
+        </div>
+        <div class="gallery-grid">
+          <div v-for="foto in reporte.evidencias" :key="foto.id" class="gallery-item">
+            <img :src="foto.url" :alt="foto.titulo" class="gallery-img" />
+            <span class="gallery-caption">{{ foto.titulo }}</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Observaciones y Recomendaciones del Técnico -->
       <div class="grid-2-cols">
         <div class="card card-notes">
@@ -165,6 +197,25 @@ const reporte = ref({
           </div>
           <div class="card-body">
             <p>{{ reporte.recomendaciones }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conformidad y Firmas -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="ti ti-writing"></i> Validez y Conformidad Sanitaria</div>
+        </div>
+        <div class="signatures-grid">
+          <div class="signature-box">
+            <div class="signature-line"></div>
+            <span class="sig-name">{{ reporte.firmaTecnico }}</span>
+            <span class="sig-role">Firma Técnico Operativo</span>
+          </div>
+          <div class="signature-box">
+            <div class="signature-line"></div>
+            <span class="sig-name">{{ reporte.clienteConformidad }}</span>
+            <span class="sig-role">Conformidad Representante Cliente</span>
           </div>
         </div>
       </div>
@@ -228,9 +279,23 @@ const reporte = ref({
 
 .hallazgo-tag { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 500; }
 
+/* Galería de Evidencias */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 20px; }
+.gallery-item { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; background: #fafafa; }
+.gallery-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+.gallery-caption { display: block; padding: 8px 12px; font-size: 12px; font-weight: 500; color: #4b5563; text-align: center; }
+
+/* Firmas */
+.signatures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; padding: 24px; }
+.signature-box { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.signature-line { width: 180px; height: 1px; background: #9ca3af; margin-bottom: 8px; margin-top: 24px; }
+.sig-name { font-size: 13.5px; font-weight: 600; color: #111827; }
+.sig-role { font-size: 12px; color: #6b7280; }
+
 /* Botones y Badges */
-.btn-primary { background: var(--green); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
-.btn-primary:hover { background: #379614; }
+.btn-primary { background: var(--green); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
+.btn-primary:hover:not(:disabled) { background: #379614; }
+.btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }
 
 .badge { padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
 .badge--green { background: #e8f5e9; color: #2e7d32; }
@@ -239,4 +304,7 @@ const reporte = ref({
 
 .text-amber { color: #d97706; }
 .yellow-border { border-color: #fde68a; }
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 </style>
