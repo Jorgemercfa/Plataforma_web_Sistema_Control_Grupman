@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue'
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js'
 import { localesProvisionales } from '../../data/provisionalLocalesData.js'
+import { serviciosProvisionales, TIPOS_SERVICIO } from '../../data/provisionalServiciosData.js'
 
 const route = useRoute()
 
@@ -26,19 +27,45 @@ const form = ref({ nombre: '', direccion: '' })
 
 function guardarLocal() {
   if (!form.value.nombre || !form.value.direccion) return
+  const nuevoLocalId = Date.now()
+
   locales.value.push({
-    id: Date.now(),
+    id: nuevoLocalId,
     clienteId: route.params.id,
     nombre: form.value.nombre,
     direccion: form.value.direccion,
-    estaciones: 0,
     proximaVisita: 'Sin programar',
   })
+
+  // Se crean automáticamente los 5 servicios para el nuevo local
+  TIPOS_SERVICIO.forEach((tipo, i) => {
+    serviciosProvisionales.push({
+      id: nuevoLocalId + i + 1,
+      localId: nuevoLocalId,
+      tipo,
+      estado: 'Pendiente',
+      frecuencia: 'Por definir',
+      responsable: 'Por asignar',
+      ultimaVisita: 'Sin registros',
+      proximaVisita: 'Sin programar',
+    })
+  })
+
   form.value = { nombre: '', direccion: '' }
   modalAbierto.value = false
 }
 
-const totalEstaciones = computed(() => locales.value.reduce((s, l) => s + l.estaciones, 0))
+/* Cada local puede tener hasta 5 servicios (Desinsectación, Desinfección,
+   Desratización, Limpieza de cisternas, Diagnóstico y monitoreo). */
+const serviciosDeLocal = (localId) =>
+  serviciosProvisionales.filter((s) => String(s.localId) === String(localId))
+
+const serviciosActivosDeLocal = (localId) =>
+  serviciosDeLocal(localId).filter((s) => s.estado === 'Activo').length
+
+const totalServiciosActivos = computed(() =>
+  locales.value.reduce((total, l) => total + serviciosActivosDeLocal(l.id), 0)
+)
 </script>
 
 <template>
@@ -84,7 +111,7 @@ const totalEstaciones = computed(() => locales.value.reduce((s, l) => s + l.esta
         <div class="card-header">
           <div class="card-title">
             <i class="ti ti-building-warehouse" aria-hidden="true"></i>
-            Locales ({{ locales.length }} · {{ totalEstaciones }} estaciones)
+            Locales ({{ locales.length }} · {{ totalServiciosActivos }} servicios activos)
           </div>
           <button class="btn-primary btn-sm" @click="modalAbierto = true">+ Nuevo local</button>
         </div>
@@ -95,7 +122,7 @@ const totalEstaciones = computed(() => locales.value.reduce((s, l) => s + l.esta
               <tr>
                 <th>Local</th>
                 <th>Dirección</th>
-                <th>Estaciones</th>
+                <th>Servicios activos</th>
                 <th>Próxima visita</th>
                 <th></th>
               </tr>
@@ -104,14 +131,14 @@ const totalEstaciones = computed(() => locales.value.reduce((s, l) => s + l.esta
               <tr v-for="l in locales" :key="l.id">
                 <td class="cell-main">{{ l.nombre }}</td>
                 <td class="cell-sub">{{ l.direccion }}</td>
-                <td>{{ l.estaciones }}</td>
+                <td>{{ serviciosActivosDeLocal(l.id) }} / {{ serviciosDeLocal(l.id).length }}</td>
                 <td>{{ l.proximaVisita }}</td>
                 <td class="cell-accion">
                   <router-link
                     :to="`/admin/clientes/${cliente.id}/locales/${l.id}`"
                     class="btn-link"
                   >
-                    Ver estaciones →
+                    Ver servicios →
                   </router-link>
                 </td>
               </tr>
@@ -150,6 +177,10 @@ const totalEstaciones = computed(() => locales.value.reduce((s, l) => s + l.esta
             <button type="submit" class="btn-guardar">Guardar</button>
           </div>
         </form>
+        <p class="modal-nota">
+          Los 5 servicios (Desinsectación, Desinfección, Desratización, Limpieza de cisternas
+          y Diagnóstico y monitoreo) se crean automáticamente para el nuevo local.
+        </p>
       </div>
     </div>
   </layoutNavbarAdmin>
@@ -226,6 +257,8 @@ const totalEstaciones = computed(() => locales.value.reduce((s, l) => s + l.esta
 .btn-cancelar, .btn-guardar { flex: 1; border: none; border-radius: 999px; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; }
 .btn-cancelar { background: #f3f4f6; color: #374151; }
 .btn-guardar { background: #42ae1a; color: #fff; }
+
+.modal-nota { margin-top: 10px; font-size: 11.5px; color: #9ca3af; line-height: 1.4; }
 
 @media (max-width: 900px) { .info-card { grid-template-columns: repeat(2, 1fr); } }
 </style>

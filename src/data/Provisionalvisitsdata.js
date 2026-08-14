@@ -1,140 +1,49 @@
-// provisionalVisitsData.js
-// Datos mock para visitas — reemplazar por llamadas a Firestore en la fase funcional.
-// Sigue el mismo patrón que provisionalCustomerData.js
+// src/data/provisionalVisitasData.js
+// "servicioId" referencia a un servicio de provisionalServiciosData.js
+// cuyo tipo sea distinto de 'Desratización' (Desinsectación, Desinfección,
+// Limpieza de cisternas, Diagnóstico y monitoreo).
 
-export const visitas = [
-  {
-    id: 'VIS-001',
-    clienteId: 'CLI-001',
-    cliente: 'Restaurante El Olivo',
-    local: 'Sede Miraflores',
-    direccion: 'Av. Benavides 1230, Miraflores, Lima',
-    contactoNombre: 'Mario Ríos',
-    contactoTelefono: '987 654 321',
-    tecnicoId: 'TEC-001',
-    tecnico: 'Luis Torres',
-    fecha: '2026-08-07',
-    hora: '08:30',
-    tipo: 'Desinsectación',
-    estado: 'completada',
-    prioridad: 'normal',
-    instrucciones: 'Revisar cocina y área de almacén. Cliente reportó avistamiento de cucarachas.',
-    estaciones: [
-      { id:'EST-001', codigo:'EST-001', tipo:'Cebadero',       ubicacion:'Entrada principal', revisada:true  },
-      { id:'EST-002', codigo:'EST-002', tipo:'Trampa pegante', ubicacion:'Cocina',             revisada:true  },
-      { id:'EST-003', codigo:'EST-003', tipo:'Cebadero',       ubicacion:'Almacén',            revisada:false },
-    ],
-    serviciosRealizados: ['Desinsectación'],
-    plagasEncontradas:   [{ nombre:'Cucarachas', nivel:'medio' }],
-    productosUsados:     [{ nombre:'Cipermetrina 25% EC', cantidad:200, unidad:'ml' }],
-    observaciones: 'Se aplicó tratamiento en cocina y almacén. Se recomienda revisión en 15 días.',
-    informePdfUrl: null,
-    fechaCompletada: '2026-08-07',
-  },
-  {
-    id: 'VIS-002',
-    clienteId: 'CLI-002',
-    cliente: 'Almacenes San Martín',
-    local: 'Almacén Central',
-    direccion: 'Jr. Huánuco 456, La Victoria, Lima',
-    contactoNombre: 'Carmen Salinas',
-    contactoTelefono: '976 543 210',
-    tecnicoId: 'TEC-001',
-    tecnico: 'Luis Torres',
-    fecha: '2026-08-07',
-    hora: '10:00',
-    tipo: 'Desratización',
-    estado: 'en_proceso',
-    prioridad: 'urgente',
-    instrucciones: 'Revisar especialmente la zona de carga y descarga. Roedores reportados en esquina NE.',
-    estaciones: [
-      { id:'EST-004', codigo:'EST-004', tipo:'Cebadero',       ubicacion:'Entrada principal', revisada:false },
-      { id:'EST-005', codigo:'EST-005', tipo:'Cebadero',       ubicacion:'Zona de carga',      revisada:false },
-      { id:'EST-006', codigo:'EST-006', tipo:'Trampa pegante', ubicacion:'Esquina NE',         revisada:false },
-      { id:'EST-007', codigo:'EST-007', tipo:'Cebadero',       ubicacion:'Pasillo central',    revisada:false },
-    ],
-    serviciosRealizados: [],
-    plagasEncontradas:   [],
-    productosUsados:     [],
-    observaciones: '',
-    informePdfUrl: null,
-    fechaCompletada: null,
-  },
-  {
-    id: 'VIS-003',
-    clienteId: 'CLI-003',
-    cliente: 'Hotel Libertador',
-    local: 'Cocina principal',
-    direccion: 'Los Eucaliptos 550, San Isidro, Lima',
-    contactoNombre: 'Andrea Vega',
-    contactoTelefono: '954 321 098',
-    tecnicoId: 'TEC-001',
-    tecnico: 'Luis Torres',
-    fecha: '2026-08-07',
-    hora: '13:00',
-    tipo: 'Desinsectación',
-    estado: 'programada',
-    prioridad: 'normal',
-    instrucciones: 'Acceso por puerta de servicio. Solicitar a Andrea Vega al llegar.',
-    estaciones: [
-      { id:'EST-008', codigo:'EST-008', tipo:'Trampa pegante', ubicacion:'Cocina - entrada',  revisada:false },
-      { id:'EST-009', codigo:'EST-009', tipo:'Trampa pegante', ubicacion:'Cocina - fondo',    revisada:false },
-      { id:'EST-010', codigo:'EST-010', tipo:'Dispensador',    ubicacion:'Comedor - pasillo', revisada:false },
-    ],
-    serviciosRealizados: [],
-    plagasEncontradas:   [],
-    productosUsados:     [],
-    observaciones: '',
-    informePdfUrl: null,
-    fechaCompletada: null,
-  },
-  {
-    id: 'VIS-004',
-    clienteId: 'CLI-004',
-    cliente: 'Colegio Los Pinos',
-    local: 'Comedor',
-    direccion: 'Av. La Marina 320, San Miguel, Lima',
-    contactoNombre: 'Luis Mendoza',
-    contactoTelefono: '943 210 987',
-    tecnicoId: 'TEC-001',
-    tecnico: 'Luis Torres',
-    fecha: '2026-08-07',
-    hora: '15:30',
-    tipo: 'Desratización',
-    estado: 'programada',
-    prioridad: 'normal',
-    instrucciones: 'Servicio mensual de rutina. Ingresar por portería principal.',
-    estaciones: [
-      { id:'EST-011', codigo:'EST-011', tipo:'Cebadero', ubicacion:'Comedor - esquina A', revisada:false },
-      { id:'EST-012', codigo:'EST-012', tipo:'Cebadero', ubicacion:'Comedor - esquina B', revisada:false },
-      { id:'EST-013', codigo:'EST-013', tipo:'Cebadero', ubicacion:'Cocina',              revisada:false },
-    ],
-    serviciosRealizados: [],
-    plagasEncontradas:   [],
-    productosUsados:     [],
-    observaciones: '',
-    informePdfUrl: null,
-    fechaCompletada: null,
-  },
-];
+export const visitasProvisionales = [
+  // Local 1 · Desinsectación (servicio 1)
+  { id: 1, servicioId: 1, fecha: '02/07/2026', tecnico: 'Jorge Salas', hallazgos: 'Sin presencia de insectos voladores', observaciones: 'Aplicación preventiva en zonas húmedas' },
+  { id: 2, servicioId: 1, fecha: '02/06/2026', tecnico: 'Jorge Salas', hallazgos: 'Actividad leve de cucarachas en cocina', observaciones: 'Aplicación de gel cebo en zócalos' },
 
-export const proximasVisitas = [
-  { id:'VIS-005', cliente:'Clínica Santa Rosa',    local:'Piso 2',      fecha:'2026-08-08', hora:'09:00', tipo:'Desinfección',   tecnico:'Luis Torres' },
-  { id:'VIS-006', cliente:'Banco Continental',     local:'Sede Centro', fecha:'2026-08-09', hora:'11:00', tipo:'Desinsectación', tecnico:'Luis Torres' },
-  { id:'VIS-007', cliente:'Planta Industrial Perú',local:'Almacén A',   fecha:'2026-08-12', hora:'08:00', tipo:'Desratización',  tecnico:'Luis Torres' },
-];
+  // Local 1 · Desinfección (servicio 2)
+  { id: 3, servicioId: 2, fecha: '02/07/2026', tecnico: 'Jorge Salas', hallazgos: 'Superficies desinfectadas correctamente', observaciones: 'Sin incidencias' },
 
-export const estaciones = {
-  'EST-001': { codigo:'EST-001', tipo:'Cebadero',       ubicacion:'Entrada principal', cliente:'Restaurante El Olivo', local:'Sede Miraflores', ultimaRevision:'18 Jul 2026', estado:'activa' },
-  'EST-002': { codigo:'EST-002', tipo:'Trampa pegante', ubicacion:'Cocina',            cliente:'Restaurante El Olivo', local:'Sede Miraflores', ultimaRevision:'18 Jul 2026', estado:'activa' },
-  'EST-003': { codigo:'EST-003', tipo:'Cebadero',       ubicacion:'Almacén',           cliente:'Restaurante El Olivo', local:'Sede Miraflores', ultimaRevision:'18 Jul 2026', estado:'activa' },
-  'EST-004': { codigo:'EST-004', tipo:'Cebadero',       ubicacion:'Entrada principal', cliente:'Almacenes San Martín', local:'Almacén Central', ultimaRevision:'20 Jun 2026', estado:'activa' },
-  'EST-005': { codigo:'EST-005', tipo:'Cebadero',       ubicacion:'Zona de carga',     cliente:'Almacenes San Martín', local:'Almacén Central', ultimaRevision:'20 Jun 2026', estado:'activa' },
-  'EST-006': { codigo:'EST-006', tipo:'Trampa pegante', ubicacion:'Esquina NE',        cliente:'Almacenes San Martín', local:'Almacén Central', ultimaRevision:'20 Jun 2026', estado:'activa' },
-};
+  // Local 1 · Diagnóstico y monitoreo (servicio 5)
+  { id: 4, servicioId: 5, fecha: '02/07/2026', tecnico: 'Jorge Salas', hallazgos: 'Condiciones sanitarias generales adecuadas', observaciones: 'Se recomienda sellar rejilla de desagüe' },
 
-// Helpers
-export const getVisitaById      = (id)        => visitas.find(v => v.id === id)             || null;
-export const getVisitasByTecnico = (tecnicoId) => visitas.filter(v => v.tecnicoId === tecnicoId);
-export const getVisitasByFecha   = (fecha)     => visitas.filter(v => v.fecha === fecha);
-export const getEstacionByCodigo = (codigo)    => estaciones[codigo]                        || null;
+  // Local 2 · Desinsectación (servicio 6)
+  { id: 5, servicioId: 6, fecha: '10/07/2026', tecnico: 'Luis Prado', hallazgos: 'Sin actividad de insectos', observaciones: 'Servicio sin novedades' },
+
+  // Local 2 · Desinfección (servicio 7) — inactivo, último registro antiguo
+  { id: 6, servicioId: 7, fecha: '12/05/2026', tecnico: 'Luis Prado', hallazgos: 'Desinfección de áreas comunes completada', observaciones: 'Cliente pausó el servicio' },
+
+  // Local 2 · Limpieza de cisternas (servicio 9)
+  { id: 7, servicioId: 9, fecha: '20/03/2026', tecnico: 'Luis Prado', hallazgos: 'Cisterna sin sedimentos relevantes', observaciones: 'Limpieza y desinfección completa' },
+
+  // Local 2 · Diagnóstico y monitoreo (servicio 10)
+  { id: 8, servicioId: 10, fecha: '10/07/2026', tecnico: 'Luis Prado', hallazgos: 'Instalaciones en buen estado', observaciones: 'Sin observaciones adicionales' },
+
+  // Local 3 · Desinsectación (servicio 11)
+  { id: 9, servicioId: 11, fecha: '05/07/2026', tecnico: 'Karla Ríos', hallazgos: 'Presencia leve de hormigas en almacén', observaciones: 'Aplicación de cebo en gel' },
+
+  // Local 3 · Desinfección (servicio 12)
+  { id: 10, servicioId: 12, fecha: '05/07/2026', tecnico: 'Karla Ríos', hallazgos: 'Superficies desinfectadas', observaciones: 'Sin incidencias' },
+
+  // Local 3 · Diagnóstico y monitoreo (servicio 15)
+  { id: 11, servicioId: 15, fecha: '05/07/2026', tecnico: 'Karla Ríos', hallazgos: 'Sin puntos críticos detectados', observaciones: 'Próxima revisión en un mes' },
+
+  // Local 4 · Desinsectación (servicio 16) — inactivo
+  { id: 12, servicioId: 16, fecha: '18/04/2026', tecnico: 'Diego Flores', hallazgos: 'Última visita antes de pausa del servicio', observaciones: 'Cliente solicitó pausar temporalmente' },
+
+  // Local 4 · Desinfección (servicio 17)
+  { id: 13, servicioId: 17, fecha: '15/07/2026', tecnico: 'Diego Flores', hallazgos: 'Áreas comunes desinfectadas', observaciones: 'Sin novedades' },
+
+  // Local 4 · Limpieza de cisternas (servicio 19)
+  { id: 14, servicioId: 19, fecha: '02/02/2026', tecnico: 'Diego Flores', hallazgos: 'Cisterna con sedimento moderado', observaciones: 'Se realizó limpieza profunda' },
+
+  // Local 4 · Diagnóstico y monitoreo (servicio 20)
+  { id: 15, servicioId: 20, fecha: '15/07/2026', tecnico: 'Diego Flores', hallazgos: 'Sin puntos críticos', observaciones: 'Todo conforme' },
+]
