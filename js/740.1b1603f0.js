@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkgrupman"]=self["webpackChunkgrupman"]||[]).push([[740],{6740:function(e,a,n){n.r(a),n.d(a,{default:function(){return s}});var u=n(6768),l=n(4125),c={__name:"Client-Invoices",setup(e){return(e,a)=>((0,u.uX)(),(0,u.Wv)(l.A,null,{default:(0,u.k6)((()=>a[0]||(a[0]=[(0,u.Lk)("div",{class:"client-invoices"},[(0,u.Lk)("h1",null,"Facturas"),(0,u.Lk)("p",null,"Aquí aparecerán las facturas del cliente (placeholder).")],-1)]))),_:1}))}},t=n(1241);const r=(0,t.A)(c,[["__scopeId","data-v-1af99cd4"]]);var s=r}}]);
+//# sourceMappingURL=740.1b1603f0.js.map
