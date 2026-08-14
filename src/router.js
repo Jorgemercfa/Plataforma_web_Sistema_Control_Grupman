@@ -161,7 +161,7 @@ const routes = [
     },
   },
   {
-    path: '/admin/clientes/:clientId/locales/:localId/service/:serviceId',
+    path: '/admin/clientes/:clientId/locales/:localId/servicios/:servicioId',
     name: 'ServicesDetailsClient',
     component: () => import('@/views/AdminViews/Servicio-detail-view-client.vue'),
     meta: {
