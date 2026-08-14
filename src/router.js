@@ -15,7 +15,6 @@ import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import ClientSingle from '@/views/AdminViews/Client-single-view.vue';
 import LocalDetails from '@/views/AdminViews/Local-detail-view.vue';
-import ServicesDetailsClient from '@/views/AdminViews/Servicio-detail-view-client.vue';
 // Admin views Financial
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
@@ -45,10 +44,8 @@ import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 import LocalDetailsClient from '@/views/clientViews/Local-detail-client.vue';
-import ServicesClient from '@/views/clientViews/Sevices-client-item.vue';
-import ServicesDetailClient from '@/views/clientViews/Sevices-details-client-item.vue';
-import RequestModalService from '@/views/clientViews/Request-Modal-Service.vue';
-import ClientInvoiceDetails from '@/views/clientViews/Client-Invoices.vue';
+import ServicesClient from '@/views/clientViews/Services-client-item.vue';
+import ServicesDetailClient from '@/views/clientViews/Services-details-client-item.vue';
 
 const routes = [
   // Vistas principales
@@ -158,15 +155,6 @@ const routes = [
     component: LocalDetails,
     meta: {
       title: 'Detalle del Local | Plataforma Grupman',
-      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
-    },
-  },
-  {
-    path: '/admin/clientes/:clientId/locales/:localId/service/:serviceId',
-    name: 'ServicesDetailsClient',
-    component: () => import('../views/adminViews/Servicio-detail-view-client.vue'),
-    meta: {
-      title: 'Detalle del Servicio | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
@@ -394,24 +382,6 @@ const routes = [
     component: ServicesDetailClient,
     meta: {
       title: 'Detalles de los Servicios | Plataforma Grupman',
-      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
-    },
-  },
-  {
-    path: '/RequestModalService',
-    name: 'RequestModalService',
-    component: RequestModalService,
-    meta: {
-      title: 'Solicitudes de Servicio | Plataforma Grupman',
-      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
-    },
-  },
-  {
-    path: '/ClientInvoiceDetails',
-    name: 'ClientInvoiceDetails',
-    component: ClientInvoiceDetails,
-    meta: {
-      title: 'Facturas y Pagos | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
