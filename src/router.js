@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// Usamos '@' (apunta a src/) y la ruta exacta en minúsculas: 'adminViews'
+// Usamos '@' (apunta a src/) y la ruta exacta en mayúsculas/correcta: 'AdminViews' y 'clientViews'
 import MainHome from '@/views/Main-Home.vue';
 import ManualFeature from '@/views/Features-Views.vue';
 //Admin views
@@ -15,7 +15,7 @@ import InventoryDetails from '@/views/AdminViews/Inventory-item.vue';
 import ServicesDetails from '@/views/AdminViews/Services-types.vue';
 import ClientSingle from '@/views/AdminViews/Client-single-view.vue';
 import LocalDetails from '@/views/AdminViews/Local-detail-view.vue';
-import ServicesDetailsClient from '@/views/AdminViews/Servicio-detail-view-client.vue';
+// NOTE: use lazy import for Servicio-detail-view-client to avoid unused-import ESLint error
 // Admin views Financial
 import FinancialSummary from '@/views/AdminViews/Financial-summary.vue';
 import InvoiceDetails from '@/views/AdminViews/Invoices-item.vue';
@@ -45,10 +45,9 @@ import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 import LocalDetailsClient from '@/views/clientViews/Local-detail-client.vue';
-import ServicesClient from '@/views/clientViews/Sevices-client-item.vue';
-import ServicesDetailClient from '@/views/clientViews/Sevices-details-client-item.vue';
-// import RequestModalService from '@/views/clientViews/Request-Modal-Service.vue'; // converted to lazy load
-// import ClientInvoiceDetails from '@/views/clientViews/Client-Invoices.vue'; // converted to lazy load
+import ServicesClient from '@/views/clientViews/Services-client-item.vue';
+import ServicesDetailClient from '@/views/clientViews/Services-details-client-item.vue';
+// RequestModalService and ClientInvoiceDetails are lazy-loaded below to avoid unused-import ESLint errors
 
 const routes = [
   // Vistas principales
@@ -164,7 +163,7 @@ const routes = [
   {
     path: '/admin/clientes/:clientId/locales/:localId/service/:serviceId',
     name: 'ServicesDetailsClient',
-    component: () => import('../views/adminViews/Servicio-detail-view-client.vue'),
+    component: () => import('@/views/AdminViews/Servicio-detail-view-client.vue'),
     meta: {
       title: 'Detalle del Servicio | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
@@ -400,7 +399,7 @@ const routes = [
   {
     path: '/RequestModalService',
     name: 'RequestModalService',
-    component: () => import('../views/clientViews/Request-Modal-Service.vue'),
+    component: () => import('@/views/clientViews/Request-Modal-Service.vue'),
     meta: {
       title: 'Solicitudes de Servicio | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
@@ -409,7 +408,7 @@ const routes = [
   {
     path: '/ClientInvoiceDetails',
     name: 'ClientInvoiceDetails',
-    component: () => import('../views/clientViews/Client-Invoices.vue'),
+    component: () => import('@/views/clientViews/Client-Invoices.vue'),
     meta: {
       title: 'Facturas y Pagos | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
