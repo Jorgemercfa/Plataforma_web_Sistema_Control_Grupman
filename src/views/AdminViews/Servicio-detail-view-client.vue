@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
 import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmin.vue'
 import { clientesProvisionales } from '../../data/provisionalCustomerData.js'
 import { localesProvisionales } from '../../data/provisionalLocalesData.js'
@@ -8,17 +7,22 @@ import { serviciosProvisionales, iconoServicio } from '../../data/provisionalSer
 import { estacionesProvisionales } from '../../data/provisionalStationsData.js'
 import { visitasProvisionales } from '../../data/provisionalVisitasData.js'
 
-const route = useRoute()
+// recibir params desde la ruta como props
+const props = defineProps({
+  clientId: { type: [String, Number], required: true },
+  localId: { type: [String, Number], required: false },
+  servicioId: { type: [String, Number], required: true }
+})
 
 /* ── Servicio, local y cliente reales ──────────────── */
 const servicio = computed(() =>
-  serviciosProvisionales.find((s) => String(s.id) === String(route.params.servicioId))
+  serviciosProvisionales.find((s) => String(s.id) === String(props.servicioId))
 )
 const local = computed(() =>
   localesProvisionales.find((l) => String(l.id) === String(servicio.value?.localId))
 )
 const cliente = computed(() =>
-  clientesProvisionales.find((c) => String(c.id) === String(route.params.clientId))
+  clientesProvisionales.find((c) => String(c.id) === String(props.clientId))
 )
 
 const esDesratizacion = computed(() => servicio.value?.tipo === 'Desratización')
@@ -34,7 +38,7 @@ const tiposEstacion = ['Cebadero roedores', 'Trampa de luz', 'Trampa pegante', '
 const estadosEstacion = ['Activa', 'Revisar', 'Inactiva']
 
 const estaciones = ref(
-  estacionesProvisionales.filter((e) => String(e.servicioId) === String(route.params.servicioId))
+  estacionesProvisionales.filter((e) => String(e.servicioId) === String(props.servicioId))
 )
 
 const modalEstacionAbierto = ref(false)
@@ -44,7 +48,7 @@ function guardarEstacion() {
   if (!formEstacion.value.codigo || !formEstacion.value.ubicacion) return
   estaciones.value.push({
     id: Date.now(),
-    servicioId: route.params.servicioId,
+    servicioId: props.servicioId,
     codigo: formEstacion.value.codigo,
     tipo: formEstacion.value.tipo,
     ubicacion: formEstacion.value.ubicacion,
@@ -58,7 +62,7 @@ function guardarEstacion() {
 /* ═══════════════════ OTROS SERVICIOS → Bitácora de visitas ═══════════════════ */
 const visitas = ref(
   visitasProvisionales
-    .filter((v) => String(v.servicioId) === String(route.params.servicioId))
+    .filter((v) => String(v.servicioId) === String(props.servicioId))
     .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
 )
 
@@ -69,7 +73,7 @@ function guardarVisita() {
   if (!formVisita.value.fecha || !formVisita.value.tecnico || !formVisita.value.hallazgos) return
   visitas.value.unshift({
     id: Date.now(),
-    servicioId: route.params.servicioId,
+    servicioId: props.servicioId,
     fecha: formVisita.value.fecha,
     tecnico: formVisita.value.tecnico,
     hallazgos: formVisita.value.hallazgos,
@@ -87,11 +91,11 @@ function guardarVisita() {
       <div class="breadcrumb">
         <router-link to="/Client-detail">Clientes</router-link>
         <span>/</span>
-        <router-link :to="`/admin/clientes/${route.params.clientId}`">
+        <router-link :to="`/admin/clientes/${props.clientId}`">
           {{ cliente ? cliente.razonSocial : 'Cliente' }}
         </router-link>
         <span>/</span>
-        <router-link :to="`/admin/clientes/${route.params.clientId}/locales/${local.id}`">
+        <router-link :to="`/admin/clientes/${props.clientId}/locales/${local.id}`">
           {{ local.nombre }}
         </router-link>
         <span>/</span>
