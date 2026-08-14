@@ -44,8 +44,10 @@ import ClientSignIn from '@/views/clientViews/Client-sign-in.vue';
 import ForgetPasswordClient from '@/views/clientViews/Forget-password-client.vue';
 import HomeItemClient from '@/views/clientViews/Home-item-client.vue';
 import LocalDetailsClient from '@/views/clientViews/Local-detail-client.vue';
-import ServicesClient from '@/views/clientViews/Services-client-item.vue';
-import ServicesDetailClient from '@/views/clientViews/Services-details-client-item.vue';
+import ServicesClient from '@/views/clientViews/Sevices-client-item.vue';
+import ServicesDetailClient from '@/views/clientViews/Sevices-details-client-item.vue';
+import RequestModalService from '@/views/clientViews/Request-Modal-Service.vue';
+import ClientInvoiceDetails from '@/views/clientViews/Client-Invoices.vue';
 
 const routes = [
   // Vistas principales
@@ -155,6 +157,15 @@ const routes = [
     component: LocalDetails,
     meta: {
       title: 'Detalle del Local | Plataforma Grupman',
+      description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
+    },
+  },
+  {
+    path: '/admin/clientes/:clientId/locales/:localId/service/:serviceId',
+    name: 'ServicesDetailsClient',
+    component: () => import('@/views/AdminViews/Servicio-detail-view-client.vue'),
+    meta: {
+      title: 'Detalle del Servicio | Plataforma Grupman',
       description: 'Plataforma Grupman — soluciones profesionales para tu empresa.',
     },
   },
