@@ -23,37 +23,44 @@ import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmi
             
             <div class="form-group">
               <label>Lunes</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <div class="form-group">
               <label>Martes</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <div class="form-group">
               <label>Miércoles</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <div class="form-group">
               <label>Jueves</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <div class="form-group">
               <label>Viernes</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <div class="form-group">
               <label>Sábado</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <div class="form-group">
               <label>Domingo</label>
-              <input type="text" class="work-schedules-input" placeholder="Ingrese el horario de trabajo" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de ingreso" />
+              <input type="text" class="work-schedules-input" placeholder="Ingrese el hora de salida" />
             </div>
 
             <p class="work-schedules-note">
