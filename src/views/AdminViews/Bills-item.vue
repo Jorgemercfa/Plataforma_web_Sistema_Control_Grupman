@@ -4,7 +4,9 @@ import layoutNavbarAdmin from '../../components/adminComponents/layoutNavbarAdmi
 
 // Lista de gastos guardados (esto lo reemplazas por tu fetch/API real)
 const expenses = ref([
-  // { id: 1, type: 'Servicios', amount: 150.5, date: '2026-08-10' },
+  { id: 1, type: 'Servicios', amount: 150.5, date: '2026-08-10' },
+  { id: 2, type: 'Productos', amount: 160, date: '2026-07-12' },
+
 ]);
 
 // Estado del formulario
